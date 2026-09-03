@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidrah Fashion — Image Tagger</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: #fafaf8; color: #1a1a1a; }
+  header { background: #1a1a1a; color: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  header h1 { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; }
+  #progress { font-size: 12px; color: #aaa; }
+  #export-btn { background: #a3b18a; color: #fff; border: none; padding: 8px 20px; cursor: pointer; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; border-radius: 3px; }
+  #export-btn:hover { background: #8a9a72; }
+
+  #products-panel { position: fixed; right: 0; top: 53px; bottom: 0; width: 300px; background: #fff; border-left: 1px solid #e0e0da; overflow-y: auto; padding: 16px; z-index: 50; }
+  #products-panel h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: #999; margin-bottom: 12px; }
+  .product-btn { display: block; width: 100%; text-align: left; background: none; border: 1px solid #e0e0da; padding: 10px 12px; margin-bottom: 8px; cursor: pointer; border-radius: 4px; font-size: 13px; transition: background .15s; }
+  .product-btn:hover { background: #f0f4ec; border-color: #a3b18a; }
+  .product-btn .p-name { font-weight: 600; display: block; }
+  .product-btn .p-meta { font-size: 11px; color: #888; margin-top: 2px; }
+  .product-btn.selected { background: #a3b18a22; border-color: #a3b18a; }
+  .skip-btn { display: block; width: 100%; text-align: left; background: none; border: 1px dashed #ccc; padding: 10px 12px; margin-bottom: 8px; cursor: pointer; border-radius: 4px; font-size: 12px; color: #999; }
+  .skip-btn:hover { border-color: #999; color: #555; }
+
+  main { margin-right: 300px; padding: 24px; }
+  .group-card { background: #fff; border: 2px solid #e0e0da; border-radius: 6px; margin-bottom: 24px; overflow: hidden; transition: border-color .2s; }
+  .group-card.assigned { border-color: #a3b18a; }
+  .group-card.skipped { border-color: #f0c040; opacity: .7; }
+  .group-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: #f5f5f2; border-bottom: 1px solid #e0e0da; }
+  .group-num { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: #999; }
+  .group-ts { font-size: 12px; color: #555; }
+  .assignment-badge { font-size: 11px; font-weight: 700; color: #4a7a30; background: #e8f5e0; padding: 3px 10px; border-radius: 12px; }
+  .skip-badge { font-size: 11px; font-weight: 700; color: #a07000; background: #fff8e0; padding: 3px 10px; border-radius: 12px; }
+  .images-row { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 16px; }
+  .img-thumb { width: 160px; height: 200px; object-fit: contain; background: #f0f0ec; border-radius: 3px; cursor: pointer; border: 2px solid transparent; transition: border-color .15s; }
+  .img-thumb:hover { border-color: #a3b18a; }
+  .img-thumb.zoomed-active { border-color: #1a1a1a; }
+  .filename { font-size: 10px; color: #bbb; padding: 0 16px 10px; word-break: break-all; }
+  .action-row { display: flex; gap: 8px; padding: 8px 16px 14px; flex-wrap: wrap; }
+  .assign-btn-inline { font-size: 11px; background: #f0f4ec; border: 1px solid #a3b18a; color: #3a5a20; padding: 5px 12px; border-radius: 20px; cursor: pointer; }
+  .assign-btn-inline:hover { background: #a3b18a; color: #fff; }
+  .skip-btn-inline { font-size: 11px; background: #fffbf0; border: 1px solid #f0c040; color: #806000; padding: 5px 12px; border-radius: 20px; cursor: pointer; }
+  .skip-btn-inline:hover { background: #f0c040; color: #fff; }
+  .clear-btn-inline { font-size: 11px; background: #fdf0f0; border: 1px solid #e09090; color: #a04040; padding: 5px 12px; border-radius: 20px; cursor: pointer; }
+  .clear-btn-inline:hover { background: #e09090; color: #fff; }
+
+  /* Lightbox */
+  #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.85); z-index: 200; align-items: center; justify-content: center; }
+  #lightbox.open { display: flex; }
+  #lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+  #lightbox-close { position: absolute; top: 16px; right: 24px; color: #fff; font-size: 32px; cursor: pointer; background: none; border: none; }
+
+  /* Export output */
+  #output-area { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 300; align-items: center; justify-content: center; }
+  #output-area.open { display: flex; }
+  #output-box { background: #fff; border-radius: 6px; width: 90vw; max-width: 800px; max-height: 80vh; display: flex; flex-direction: column; }
+  #output-box h2 { padding: 16px 20px; font-size: 14px; border-bottom: 1px solid #eee; }
+  #output-json { flex: 1; overflow-y: auto; padding: 16px 20px; font-family: monospace; font-size: 12px; white-space: pre-wrap; background: #fafafa; }
+  .output-actions { padding: 12px 20px; border-top: 1px solid #eee; display: flex; gap: 10px; }
+  .copy-btn { background: #a3b18a; color: #fff; border: none; padding: 8px 20px; cursor: pointer; border-radius: 3px; font-size: 13px; }
+  .close-output-btn { background: #eee; border: none; padding: 8px 20px; cursor: pointer; border-radius: 3px; font-size: 13px; }
+  .note { font-size: 12px; color: #888; padding: 8px 20px 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Sidrah Fashion — Image Tagger</h1>
+  <div style="display:flex;align-items:center;gap:16px">
+    <span id="progress">Loading...</span>
+    <button id="export-btn" onclick="openExport()">Export catalog.json update</button>
+  </div>
+</header>
+
+<aside id="products-panel">
+  <h2>Your Products</h2>
+  <div id="product-list"></div>
+</aside>
+
+<main id="main-content"></main>
+
+<div id="lightbox">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<div id="output-area">
+  <div id="output-box">
+    <h2>catalog.json image assignments — copy this and replace src/data/catalog.json</h2>
+    <div class="note">Only the "images" arrays have been updated. All other product data is unchanged.</div>
+    <pre id="output-json"></pre>
+    <div class="output-actions">
+      <button class="copy-btn" onclick="copyOutput()">Copy to clipboard</button>
+      <button class="close-output-btn" onclick="closeExport()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── State ─────────────────────────────────────────────────────────────────────
+const IMAGE_BASE = '../public/images/products/SIDRAH FASHION PRODUCTS IMAGE/';
+const assignments = {}; // groupKey → productId | 'skip' | null
+
+// Products from catalog.json — loaded below
+let PRODUCTS = [];
+
+// Image groups — generated from the folder listing baked in below
+const GROUPS_DATA = {"groups":{"WhatsApp Image 2026-08-25 at 4.53.20 PM":["WhatsApp Image 2026-08-25 at 4.53.20 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.53.21 PM":["WhatsApp Image 2026-08-25 at 4.53.21 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.53.21 PM (2).jpeg","WhatsApp Image 2026-08-25 at 4.53.21 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.53.22 PM":["WhatsApp Image 2026-08-25 at 4.53.22 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.53.22 PM (2).jpeg","WhatsApp Image 2026-08-25 at 4.53.22 PM (3).jpeg","WhatsApp Image 2026-08-25 at 4.53.22 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.53.23 PM":["WhatsApp Image 2026-08-25 at 4.53.23 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.53.23 PM (2).jpeg","WhatsApp Image 2026-08-25 at 4.53.23 PM (3).jpeg","WhatsApp Image 2026-08-25 at 4.53.23 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.53.24 PM":["WhatsApp Image 2026-08-25 at 4.53.24 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.53.24 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.54.08 PM":["WhatsApp Image 2026-08-25 at 4.54.08 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.54.08 PM (2).jpeg","WhatsApp Image 2026-08-25 at 4.54.08 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.54.09 PM":["WhatsApp Image 2026-08-25 at 4.54.09 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.54.09 PM (2).jpeg","WhatsApp Image 2026-08-25 at 4.54.09 PM (3).jpeg","WhatsApp Image 2026-08-25 at 4.54.09 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.54.10 PM":["WhatsApp Image 2026-08-25 at 4.54.10 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.54.10 PM (2).jpeg","WhatsApp Image 2026-08-25 at 4.54.10 PM (3).jpeg","WhatsApp Image 2026-08-25 at 4.54.10 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.54.11 PM":["WhatsApp Image 2026-08-25 at 4.54.11 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.56.18 PM":["WhatsApp Image 2026-08-25 at 4.56.18 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.56.18 PM (2).jpeg","WhatsApp Image 2026-08-25 at 4.56.18 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.56.19 PM":["WhatsApp Image 2026-08-25 at 4.56.19 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.56.19 PM (2).jpeg","WhatsApp Image 2026-08-25 at 4.56.19 PM (3).jpeg","WhatsApp Image 2026-08-25 at 4.56.19 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.56.20 PM":["WhatsApp Image 2026-08-25 at 4.56.20 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.57.52 PM":["WhatsApp Image 2026-08-25 at 4.57.52 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.58.22 PM":["WhatsApp Image 2026-08-25 at 4.58.22 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.58.22 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.58.23 PM":["WhatsApp Image 2026-08-25 at 4.58.23 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.58.23 PM (2).jpeg","WhatsApp Image 2026-08-25 at 4.58.23 PM (3).jpeg","WhatsApp Image 2026-08-25 at 4.58.23 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.58.24 PM":["WhatsApp Image 2026-08-25 at 4.58.24 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.59.44 PM":["WhatsApp Image 2026-08-25 at 4.59.44 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.59.46 PM":["WhatsApp Image 2026-08-25 at 4.59.46 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.59.46 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.59.47 PM":["WhatsApp Image 2026-08-25 at 4.59.47 PM (1).jpeg","WhatsApp Image 2026-08-25 at 4.59.47 PM.jpeg"],"WhatsApp Image 2026-08-25 at 4.59.48 PM":["WhatsApp Image 2026-08-25 at 4.59.48 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.00.08 PM":["WhatsApp Image 2026-08-25 at 5.00.08 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.00.08 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.00.08 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.00.09 PM":["WhatsApp Image 2026-08-25 at 5.00.09 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.00.09 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.00.31 PM":["WhatsApp Image 2026-08-25 at 5.00.31 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.01.32 PM":["WhatsApp Image 2026-08-25 at 5.01.32 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.01.32 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.01.32 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.01.33 PM":["WhatsApp Image 2026-08-25 at 5.01.33 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.01.33 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.01.33 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.01.33 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.01.34 PM":["WhatsApp Image 2026-08-25 at 5.01.34 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.01.34 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.01.34 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.13.36 PM":["WhatsApp Image 2026-08-25 at 5.13.36 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.16.28 PM":["WhatsApp Image 2026-08-25 at 5.16.28 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.16.28 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.16.28 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.16.29 PM":["WhatsApp Image 2026-08-25 at 5.16.29 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.16.29 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.16.29 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.16.30 PM":["WhatsApp Image 2026-08-25 at 5.16.30 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.16.30 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.16.30 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.16.30 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.16.31 PM":["WhatsApp Image 2026-08-25 at 5.16.31 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.16.31 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.16.57 PM":["WhatsApp Image 2026-08-25 at 5.16.57 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.16.57 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.16.57 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.16.58 PM":["WhatsApp Image 2026-08-25 at 5.16.58 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.16.58 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.17.14 PM":["WhatsApp Image 2026-08-25 at 5.17.14 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.17.15 PM":["WhatsApp Image 2026-08-25 at 5.17.15 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.17.15 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.17.15 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.17.16 PM":["WhatsApp Image 2026-08-25 at 5.17.16 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.17.16 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.17.26 PM":["WhatsApp Image 2026-08-25 at 5.17.26 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.17.26 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.17.26 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.17.27 PM":["WhatsApp Image 2026-08-25 at 5.17.27 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.17.27 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.17.27 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.17.28 PM":["WhatsApp Image 2026-08-25 at 5.17.28 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.18.31 PM":["WhatsApp Image 2026-08-25 at 5.18.31 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.18.31 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.18.31 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.18.31 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.18.32 PM":["WhatsApp Image 2026-08-25 at 5.18.32 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.18.32 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.18.32 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.19.57 PM":["WhatsApp Image 2026-08-25 at 5.19.57 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.22.10 PM":["WhatsApp Image 2026-08-25 at 5.22.10 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.22.39 PM":["WhatsApp Image 2026-08-25 at 5.22.39 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.22.39 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.31.09 PM":["WhatsApp Image 2026-08-25 at 5.31.09 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.31.09 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.31.09 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.31.10 PM":["WhatsApp Image 2026-08-25 at 5.31.10 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.31.10 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.31.10 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.31.10 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.31.11 PM":["WhatsApp Image 2026-08-25 at 5.31.11 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.31.45 PM":["WhatsApp Image 2026-08-25 at 5.31.45 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.31.46 PM":["WhatsApp Image 2026-08-25 at 5.31.46 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.31.46 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.31.46 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.31.47 PM":["WhatsApp Image 2026-08-25 at 5.31.47 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.31.47 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.31.47 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.33.45 PM":["WhatsApp Image 2026-08-25 at 5.33.45 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.33.45 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.33.45 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.33.45 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.33.46 PM":["WhatsApp Image 2026-08-25 at 5.33.46 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.33.46 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.33.46 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.33.55 PM":["WhatsApp Image 2026-08-25 at 5.33.55 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.33.56 PM":["WhatsApp Image 2026-08-25 at 5.33.56 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.33.56 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.33.56 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.33.56 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.33.57 PM":["WhatsApp Image 2026-08-25 at 5.33.57 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.33.57 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.33.57 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.34.31 PM":["WhatsApp Image 2026-08-25 at 5.34.31 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.34.50 PM":["WhatsApp Image 2026-08-25 at 5.34.50 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.34.50 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.34.51 PM":["WhatsApp Image 2026-08-25 at 5.34.51 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.34.51 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.34.51 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.34.51 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.34.52 PM":["WhatsApp Image 2026-08-25 at 5.34.52 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.34.52 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.34.52 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.35.29 PM":["WhatsApp Image 2026-08-25 at 5.35.29 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.35.29 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.35.30 PM":["WhatsApp Image 2026-08-25 at 5.35.30 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.35.30 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.35.30 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.35.30 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.35.31 PM":["WhatsApp Image 2026-08-25 at 5.35.31 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.35.31 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.35.31 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.35.32 PM":["WhatsApp Image 2026-08-25 at 5.35.32 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.35.32 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.35.32 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.35.46 PM":["WhatsApp Image 2026-08-25 at 5.35.46 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.35.46 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.35.46 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.35.47 PM":["WhatsApp Image 2026-08-25 at 5.35.47 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.35.47 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.35.47 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.35.47 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.35.48 PM":["WhatsApp Image 2026-08-25 at 5.35.48 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.00 PM":["WhatsApp Image 2026-08-25 at 5.36.00 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.36.00 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.36.00 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.36.00 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.01 PM":["WhatsApp Image 2026-08-25 at 5.36.01 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.36.01 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.36.01 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.36.01 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.02 PM":["WhatsApp Image 2026-08-25 at 5.36.02 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.36.02 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.28 PM":["WhatsApp Image 2026-08-25 at 5.36.28 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.36.28 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.36.28 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.29 PM":["WhatsApp Image 2026-08-25 at 5.36.29 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.36.29 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.36.29 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.30 PM":["WhatsApp Image 2026-08-25 at 5.36.30 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.36.30 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.36.30 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.31 PM":["WhatsApp Image 2026-08-25 at 5.36.31 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.36.31 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.36.31 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.37 PM":["WhatsApp Image 2026-08-25 at 5.36.37 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.38 PM":["WhatsApp Image 2026-08-25 at 5.36.38 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.36.38 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.39 PM":["WhatsApp Image 2026-08-25 at 5.36.39 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.36.39 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.36.39 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.36.39 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.40 PM":["WhatsApp Image 2026-08-25 at 5.36.40 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.36.40 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.36.40 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.36.40 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.41 PM":["WhatsApp Image 2026-08-25 at 5.36.41 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.53 PM":["WhatsApp Image 2026-08-25 at 5.36.53 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.54 PM":["WhatsApp Image 2026-08-25 at 5.36.54 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.36.54 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.36.54 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.36.54 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.55 PM":["WhatsApp Image 2026-08-25 at 5.36.55 PM (1).jpeg","WhatsApp Image 2026-08-25 at 5.36.55 PM (2).jpeg","WhatsApp Image 2026-08-25 at 5.36.55 PM (3).jpeg","WhatsApp Image 2026-08-25 at 5.36.55 PM.jpeg"],"WhatsApp Image 2026-08-25 at 5.36.56 PM":["WhatsApp Image 2026-08-25 at 5.36.56 PM.jpeg"],"WhatsApp Image 2026-08-30 at 4.33.01 PM":["WhatsApp Image 2026-08-30 at 4.33.01 PM (1).jpeg","WhatsApp Image 2026-08-30 at 4.33.01 PM (2).jpeg","WhatsApp Image 2026-08-30 at 4.33.01 PM (3).jpeg","WhatsApp Image 2026-08-30 at 4.33.01 PM (4).jpeg","WhatsApp Image 2026-08-30 at 4.33.01 PM (5).jpeg","WhatsApp Image 2026-08-30 at 4.33.01 PM (6).jpeg","WhatsApp Image 2026-08-30 at 4.33.01 PM (7).jpeg","WhatsApp Image 2026-08-30 at 4.33.01 PM (8).jpeg","WhatsApp Image 2026-08-30 at 4.33.01 PM (9).jpeg","WhatsApp Image 2026-08-30 at 4.33.01 PM.jpeg"],"WhatsApp Image 2026-08-30 at 4.36.18 PM":["WhatsApp Image 2026-08-30 at 4.36.18 PM (1).jpeg","WhatsApp Image 2026-08-30 at 4.36.18 PM (2).jpeg","WhatsApp Image 2026-08-30 at 4.36.18 PM (3).jpeg","WhatsApp Image 2026-08-30 at 4.36.18 PM (4).jpeg","WhatsApp Image 2026-08-30 at 4.36.18 PM (5).jpeg","WhatsApp Image 2026-08-30 at 4.36.18 PM (6).jpeg","WhatsApp Image 2026-08-30 at 4.36.18 PM (7).jpeg","WhatsApp Image 2026-08-30 at 4.36.18 PM.jpeg"],"WhatsApp Image 2026-08-30 at 5.06.15 PM":["WhatsApp Image 2026-08-30 at 5.06.15 PM (1).jpeg","WhatsApp Image 2026-08-30 at 5.06.15 PM (10).jpeg","WhatsApp Image 2026-08-30 at 5.06.15 PM (11).jpeg","WhatsApp Image 2026-08-30 at 5.06.15 PM (2).jpeg","WhatsApp Image 2026-08-30 at 5.06.15 PM (3).jpeg","WhatsApp Image 2026-08-30 at 5.06.15 PM (4).jpeg","WhatsApp Image 2026-08-30 at 5.06.15 PM (5).jpeg","WhatsApp Image 2026-08-30 at 5.06.15 PM (6).jpeg","WhatsApp Image 2026-08-30 at 5.06.15 PM (7).jpeg","WhatsApp Image 2026-08-30 at 5.06.15 PM (8).jpeg","WhatsApp Image 2026-08-30 at 5.06.15 PM (9).jpeg","WhatsApp Image 2026-08-30 at 5.06.15 PM.jpeg"],"WhatsApp Image 2026-08-30 at 5.24.51 PM":["WhatsApp Image 2026-08-30 at 5.24.51 PM (1).jpeg","WhatsApp Image 2026-08-30 at 5.24.51 PM (10).jpeg","WhatsApp Image 2026-08-30 at 5.24.51 PM (11).jpeg","WhatsApp Image 2026-08-30 at 5.24.51 PM (2).jpeg","WhatsApp Image 2026-08-30 at 5.24.51 PM (3).jpeg","WhatsApp Image 2026-08-30 at 5.24.51 PM (4).jpeg","WhatsApp Image 2026-08-30 at 5.24.51 PM (5).jpeg","WhatsApp Image 2026-08-30 at 5.24.51 PM (6).jpeg","WhatsApp Image 2026-08-30 at 5.24.51 PM (7).jpeg","WhatsApp Image 2026-08-30 at 5.24.51 PM (8).jpeg","WhatsApp Image 2026-08-30 at 5.24.51 PM (9).jpeg","WhatsApp Image 2026-08-30 at 5.24.51 PM.jpeg"],"WhatsApp Image 2026-08-30 at 5.45.53 PM":["WhatsApp Image 2026-08-30 at 5.45.53 PM (1).jpeg","WhatsApp Image 2026-08-30 at 5.45.53 PM (10).jpeg","WhatsApp Image 2026-08-30 at 5.45.53 PM (11).jpeg","WhatsApp Image 2026-08-30 at 5.45.53 PM (2).jpeg","WhatsApp Image 2026-08-30 at 5.45.53 PM (3).jpeg","WhatsApp Image 2026-08-30 at 5.45.53 PM (4).jpeg","WhatsApp Image 2026-08-30 at 5.45.53 PM (5).jpeg","WhatsApp Image 2026-08-30 at 5.45.53 PM (6).jpeg","WhatsApp Image 2026-08-30 at 5.45.53 PM (7).jpeg","WhatsApp Image 2026-08-30 at 5.45.53 PM (8).jpeg","WhatsApp Image 2026-08-30 at 5.45.53 PM (9).jpeg","WhatsApp Image 2026-08-30 at 5.45.53 PM.jpeg"]},"keys":["WhatsApp Image 2026-08-25 at 4.53.20 PM","WhatsApp Image 2026-08-25 at 4.53.21 PM","WhatsApp Image 2026-08-25 at 4.53.22 PM","WhatsApp Image 2026-08-25 at 4.53.23 PM","WhatsApp Image 2026-08-25 at 4.53.24 PM","WhatsApp Image 2026-08-25 at 4.54.08 PM","WhatsApp Image 2026-08-25 at 4.54.09 PM","WhatsApp Image 2026-08-25 at 4.54.10 PM","WhatsApp Image 2026-08-25 at 4.54.11 PM","WhatsApp Image 2026-08-25 at 4.56.18 PM","WhatsApp Image 2026-08-25 at 4.56.19 PM","WhatsApp Image 2026-08-25 at 4.56.20 PM","WhatsApp Image 2026-08-25 at 4.57.52 PM","WhatsApp Image 2026-08-25 at 4.58.22 PM","WhatsApp Image 2026-08-25 at 4.58.23 PM","WhatsApp Image 2026-08-25 at 4.58.24 PM","WhatsApp Image 2026-08-25 at 4.59.44 PM","WhatsApp Image 2026-08-25 at 4.59.46 PM","WhatsApp Image 2026-08-25 at 4.59.47 PM","WhatsApp Image 2026-08-25 at 4.59.48 PM","WhatsApp Image 2026-08-25 at 5.00.08 PM","WhatsApp Image 2026-08-25 at 5.00.09 PM","WhatsApp Image 2026-08-25 at 5.00.31 PM","WhatsApp Image 2026-08-25 at 5.01.32 PM","WhatsApp Image 2026-08-25 at 5.01.33 PM","WhatsApp Image 2026-08-25 at 5.01.34 PM","WhatsApp Image 2026-08-25 at 5.13.36 PM","WhatsApp Image 2026-08-25 at 5.16.28 PM","WhatsApp Image 2026-08-25 at 5.16.29 PM","WhatsApp Image 2026-08-25 at 5.16.30 PM","WhatsApp Image 2026-08-25 at 5.16.31 PM","WhatsApp Image 2026-08-25 at 5.16.57 PM","WhatsApp Image 2026-08-25 at 5.16.58 PM","WhatsApp Image 2026-08-25 at 5.17.14 PM","WhatsApp Image 2026-08-25 at 5.17.15 PM","WhatsApp Image 2026-08-25 at 5.17.16 PM","WhatsApp Image 2026-08-25 at 5.17.26 PM","WhatsApp Image 2026-08-25 at 5.17.27 PM","WhatsApp Image 2026-08-25 at 5.17.28 PM","WhatsApp Image 2026-08-25 at 5.18.31 PM","WhatsApp Image 2026-08-25 at 5.18.32 PM","WhatsApp Image 2026-08-25 at 5.19.57 PM","WhatsApp Image 2026-08-25 at 5.22.10 PM","WhatsApp Image 2026-08-25 at 5.22.39 PM","WhatsApp Image 2026-08-25 at 5.31.09 PM","WhatsApp Image 2026-08-25 at 5.31.10 PM","WhatsApp Image 2026-08-25 at 5.31.11 PM","WhatsApp Image 2026-08-25 at 5.31.45 PM","WhatsApp Image 2026-08-25 at 5.31.46 PM","WhatsApp Image 2026-08-25 at 5.31.47 PM","WhatsApp Image 2026-08-25 at 5.33.45 PM","WhatsApp Image 2026-08-25 at 5.33.46 PM","WhatsApp Image 2026-08-25 at 5.33.55 PM","WhatsApp Image 2026-08-25 at 5.33.56 PM","WhatsApp Image 2026-08-25 at 5.33.57 PM","WhatsApp Image 2026-08-25 at 5.34.31 PM","WhatsApp Image 2026-08-25 at 5.34.50 PM","WhatsApp Image 2026-08-25 at 5.34.51 PM","WhatsApp Image 2026-08-25 at 5.34.52 PM","WhatsApp Image 2026-08-25 at 5.35.29 PM","WhatsApp Image 2026-08-25 at 5.35.30 PM","WhatsApp Image 2026-08-25 at 5.35.31 PM","WhatsApp Image 2026-08-25 at 5.35.32 PM","WhatsApp Image 2026-08-25 at 5.35.46 PM","WhatsApp Image 2026-08-25 at 5.35.47 PM","WhatsApp Image 2026-08-25 at 5.35.48 PM","WhatsApp Image 2026-08-25 at 5.36.00 PM","WhatsApp Image 2026-08-25 at 5.36.01 PM","WhatsApp Image 2026-08-25 at 5.36.02 PM","WhatsApp Image 2026-08-25 at 5.36.28 PM","WhatsApp Image 2026-08-25 at 5.36.29 PM","WhatsApp Image 2026-08-25 at 5.36.30 PM","WhatsApp Image 2026-08-25 at 5.36.31 PM","WhatsApp Image 2026-08-25 at 5.36.37 PM","WhatsApp Image 2026-08-25 at 5.36.38 PM","WhatsApp Image 2026-08-25 at 5.36.39 PM","WhatsApp Image 2026-08-25 at 5.36.40 PM","WhatsApp Image 2026-08-25 at 5.36.41 PM","WhatsApp Image 2026-08-25 at 5.36.53 PM","WhatsApp Image 2026-08-25 at 5.36.54 PM","WhatsApp Image 2026-08-25 at 5.36.55 PM","WhatsApp Image 2026-08-25 at 5.36.56 PM","WhatsApp Image 2026-08-30 at 4.33.01 PM","WhatsApp Image 2026-08-30 at 4.36.18 PM","WhatsApp Image 2026-08-30 at 5.06.15 PM","WhatsApp Image 2026-08-30 at 5.24.51 PM","WhatsApp Image 2026-08-30 at 5.45.53 PM"]};
+
+const { groups, keys } = GROUPS_DATA;
+
+// ── Boot ──────────────────────────────────────────────────────────────────────
+async function boot() {
+  // Load catalog.json relative to this file (tools/../src/data/catalog.json)
+  try {
+    const res = await fetch('../src/data/catalog.json');
+    PRODUCTS = await res.json();
+  } catch(e) {
+    alert('Could not load src/data/catalog.json. Make sure the dev server is running at localhost:3000 and open this page via the dev server.');
+    return;
+  }
+
+  renderProductPanel();
+  renderGroups();
+  updateProgress();
+}
+
+// ── Product panel ─────────────────────────────────────────────────────────────
+function renderProductPanel() {
+  const el = document.getElementById('product-list');
+  el.innerHTML = PRODUCTS.map(p => `
+    <button class="product-btn" id="pbtn-${p.id}" onclick="selectProduct('${p.id}')">
+      <span class="p-name">${p.name}</span>
+      <span class="p-meta">${p.brandSlug} · ${p.category}${p.subcategory ? ' / '+p.subcategory : ''}</span>
+      <span class="p-meta">₹${p.price ?? '?'} · set ${p.setQuantity ?? '?'}</span>
+    </button>
+  `).join('') + `<button class="skip-btn" onclick="selectProduct('skip')">⊘ Mark as unmatched / skip</button>`;
+}
+
+let selectedProduct = null;
+function selectProduct(id) {
+  selectedProduct = id;
+  document.querySelectorAll('.product-btn').forEach(b => b.classList.remove('selected'));
+  if (id !== 'skip') {
+    const btn = document.getElementById('pbtn-'+id);
+    if (btn) btn.classList.add('selected');
+  }
+}
+
+// ── Group rendering ────────────────────────────────────────────────────────────
+function renderGroups() {
+  const main = document.getElementById('main-content');
+  main.innerHTML = keys.map((key, i) => {
+    const imgs = groups[key];
+    return `
+      <div class="group-card" id="gc-${i}" data-key="${key}">
+        <div class="group-header">
+          <span class="group-num">Group ${i+1} of ${keys.length} · ${imgs.length} image${imgs.length>1?'s':''}</span>
+          <span class="group-ts">${key.replace('WhatsApp Image ','')}</span>
+          <span id="badge-${i}"></span>
+        </div>
+        <div class="images-row">
+          ${imgs.map(f => `
+            <img class="img-thumb"
+              src="${IMAGE_BASE}${encodeURIComponent(f)}"
+              title="${f}"
+              onclick="openLightbox('${IMAGE_BASE}${encodeURIComponent(f)}')"
+              loading="lazy"
+            >
+          `).join('')}
+        </div>
+        <div class="filename">${imgs.join('<br>')}</div>
+        <div class="action-row">
+          ${PRODUCTS.map(p => `
+            <button class="assign-btn-inline" onclick="assignGroup(${i},'${key}','${p.id}')">
+              ${p.brandSlug} · ${p.name}
+            </button>
+          `).join('')}
+          <button class="skip-btn-inline" onclick="assignGroup(${i},'${key}','skip')">Skip</button>
+          <button class="clear-btn-inline" onclick="clearGroup(${i},'${key}')">Clear</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function assignGroup(i, key, productId) {
+  assignments[key] = productId;
+  const card = document.getElementById('gc-'+i);
+  const badge = document.getElementById('badge-'+i);
+  card.className = 'group-card ' + (productId === 'skip' ? 'skipped' : 'assigned');
+  if (productId === 'skip') {
+    badge.innerHTML = '<span class="skip-badge">Skipped</span>';
+  } else {
+    const p = PRODUCTS.find(x => x.id === productId);
+    badge.innerHTML = `<span class="assignment-badge">→ ${p ? p.brandSlug+' · '+p.name : productId}</span>`;
+  }
+  updateProgress();
+  // Auto-scroll to next unassigned
+  const next = keys.findIndex((k, idx) => idx > i && !assignments[k]);
+  if (next >= 0) {
+    document.getElementById('gc-'+next)?.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+
+function clearGroup(i, key) {
+  delete assignments[key];
+  const card = document.getElementById('gc-'+i);
+  card.className = 'group-card';
+  document.getElementById('badge-'+i).innerHTML = '';
+  updateProgress();
+}
+
+function updateProgress() {
+  const assigned = Object.values(assignments).filter(v => v && v !== 'skip').length;
+  const skipped = Object.values(assignments).filter(v => v === 'skip').length;
+  const total = keys.length;
+  document.getElementById('progress').textContent =
+    `${assigned} assigned · ${skipped} skipped · ${total - assigned - skipped} remaining`;
+}
+
+// ── Lightbox ──────────────────────────────────────────────────────────────────
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeLightbox(); closeExport(); } });
+
+// ── Export ────────────────────────────────────────────────────────────────────
+function openExport() {
+  // Build updated catalog: for each product, collect all assigned images in group order
+  const imagesByProduct = {};
+  PRODUCTS.forEach(p => imagesByProduct[p.id] = []);
+
+  keys.forEach(key => {
+    const pid = assignments[key];
+    if (pid && pid !== 'skip' && imagesByProduct[pid]) {
+      groups[key].forEach(f => imagesByProduct[pid].push(f));
+    }
+  });
+
+  const updated = PRODUCTS.map(p => ({
+    ...p,
+    images: imagesByProduct[p.id]
+  }));
+
+  document.getElementById('output-json').textContent = JSON.stringify(updated, null, 2);
+  document.getElementById('output-area').classList.add('open');
+}
+function closeExport() {
+  document.getElementById('output-area').classList.remove('open');
+}
+function copyOutput() {
+  navigator.clipboard.writeText(document.getElementById('output-json').textContent)
+    .then(() => alert('Copied! Now paste this into src/data/catalog.json'));
+}
+
+boot();
+</script>
+</body>
+</html>
