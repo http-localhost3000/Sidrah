@@ -36,7 +36,7 @@ export function PriceDisplay({
           Price on Enquiry
         </span>
       )}
-      <span className="eyebrow text-ink/55">
+      <span className="text-caption text-ink/55">
         {formatSetLabel(product.setQuantity)}
       </span>
     </div>

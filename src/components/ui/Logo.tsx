@@ -7,19 +7,17 @@ interface LogoProps {
   tone?: "ink" | "page";
 }
 
-// Temporary editorial wordmark. Replace with the final logo asset later
-// by swapping this component's contents.
 export function Logo({ className, size = "md", tone = "ink" }: LogoProps) {
   const scale = {
-    sm: { primary: "text-[1.05rem]", secondary: "text-[0.62rem]" },
-    md: { primary: "text-[1.35rem]", secondary: "text-[0.7rem]" },
-    lg: { primary: "text-[1.75rem]", secondary: "text-[0.8rem]" },
+    sm: { primary: "text-[1.0rem]",  secondary: "text-[0.52rem]", gap: "mt-[3px]" },
+    md: { primary: "text-[1.2rem]",  secondary: "text-[0.58rem]", gap: "mt-1"     },
+    lg: { primary: "text-[1.55rem]", secondary: "text-[0.66rem]", gap: "mt-1"     },
   }[size];
 
   const colors =
     tone === "page"
-      ? { primary: "text-page", secondary: "text-page/70" }
-      : { primary: "text-ink", secondary: "text-ink/70" };
+      ? { primary: "text-page", secondary: "text-page/50" }
+      : { primary: "text-ink",  secondary: "text-ink/50"  };
 
   return (
     <Link
@@ -29,7 +27,7 @@ export function Logo({ className, size = "md", tone = "ink" }: LogoProps) {
     >
       <span
         className={cn(
-          "font-display font-medium tracking-[0.02em]",
+          "font-display font-normal tracking-[0.14em]",
           colors.primary,
           scale.primary,
         )}
@@ -38,12 +36,13 @@ export function Logo({ className, size = "md", tone = "ink" }: LogoProps) {
       </span>
       <span
         className={cn(
-          "mt-1 font-sans font-medium uppercase tracking-[0.32em]",
+          "font-sans font-light uppercase tracking-[0.42em]",
           colors.secondary,
           scale.secondary,
+          scale.gap,
         )}
       >
-        Fashion
+        FASHION
       </span>
     </Link>
   );

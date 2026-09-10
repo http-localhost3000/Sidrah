@@ -59,31 +59,44 @@ export function Footer() {
                 </a>
               </p>
             </div>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <a
-                href={buildEnquiryUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-11 items-center gap-2 border border-page/25 bg-transparent px-5 text-[0.7rem] font-medium uppercase tracking-[0.14em] text-page transition-colors hover:border-page hover:bg-page hover:text-ink"
-              >
-                <WhatsAppIcon className="h-4 w-4" />
-                <span>WhatsApp</span>
-              </a>
-              <a
-                href={site.instagram.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Instagram @${site.instagram.handle}`}
-                className="inline-flex h-11 w-11 items-center justify-center border border-page/25 text-page transition-colors hover:border-page hover:bg-page hover:text-ink"
-              >
-                <Instagram className="h-4 w-4" aria-hidden="true" />
-              </a>
-            </div>
           </div>
 
           <FooterColumn title="Shop" items={footerNav.shop} />
           <FooterColumn title="Company" items={footerNav.company} />
           <FooterColumn title="Legal" items={footerNav.legal} />
+        </div>
+
+        <div className="mt-block flex flex-wrap items-center gap-3">
+          <a
+            href={buildEnquiryUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex h-11 items-center gap-2 overflow-hidden whitespace-nowrap bg-[#25D366] px-5 text-[0.7rem] font-medium uppercase tracking-[0.14em] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1eb857] hover:shadow-[0_12px_28px_-8px_rgba(37,211,102,0.55)]"
+          >
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+            />
+            <WhatsAppIcon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
+            <span>{site.phone}</span>
+          </a>
+          <a
+            href={site.instagram.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Instagram @${site.instagram.handle}`}
+            className="group relative inline-flex h-11 items-center gap-2 overflow-hidden whitespace-nowrap bg-[linear-gradient(45deg,#f09433_0%,#e6683c_25%,#dc2743_50%,#cc2366_75%,#bc1888_100%)] px-5 text-[0.7rem] font-medium uppercase tracking-[0.14em] text-white transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-8px_rgba(188,24,136,0.5)]"
+          >
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+            />
+            <Instagram
+              className="h-4 w-4 transition-transform duration-300 group-hover:scale-110"
+              aria-hidden="true"
+            />
+            <span>@{site.instagram.handle}</span>
+          </a>
         </div>
       </Container>
 

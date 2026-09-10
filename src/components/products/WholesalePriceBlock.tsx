@@ -5,24 +5,27 @@ interface WholesalePriceBlockProps {
   product: Pick<Product, "price" | "discount" | "currency" | "setQuantity">;
   /**
    * When true, renders full wholesale pricing using product data. When false
-   * (the default) shows an "on enquiry" summary — flip to `true` per-product
-   * (or globally) as soon as verified wholesale prices are supplied.
+   * (the default) shows an "on enquiry" summary.
    */
   showPricing?: boolean;
+  /** Override price — used when a size variant has different pricing. */
+  price?: number;
+  /** Override discount — used when a size variant has different pricing. */
+  discount?: number;
+  /** Override setQuantity — used when a size variant has different set size. */
+  setQuantity?: number;
 }
 
-/**
- * Editorial wholesale pricing block for the product detail page.
- * Structure supports: originalPrice, discount, finalPrice, piecesPerSet.
- * Mock numbers today; the same UI renders real Sidrah Fashion prices without
- * any layout change when they land.
- */
 export function WholesalePriceBlock({
   product,
   showPricing = true,
+  price: priceOverride,
+  discount: discountOverride,
+  setQuantity: setQtyOverride,
 }: WholesalePriceBlockProps) {
-  const original = product.price;
-  const discount = product.discount ?? 0;
+  const original = priceOverride ?? product.price;
+  const discount = discountOverride ?? product.discount ?? 0;
+  const setQuantity = setQtyOverride ?? product.setQuantity;
   const final = Math.max(original - discount, 0);
 
   if (!showPricing) {
@@ -33,8 +36,8 @@ export function WholesalePriceBlock({
           Price on Enquiry
         </p>
         <p className="mt-3 text-caption text-ink/60">
-          Set of {product.setQuantity} pieces · Wholesale pricing shared on
-          WhatsApp enquiry.
+          Set of {setQuantity} pieces · Wholesale pricing shared on WhatsApp
+          enquiry.
         </p>
       </div>
     );
@@ -52,7 +55,7 @@ export function WholesalePriceBlock({
       </div>
 
       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-caption text-ink/70">
-        <span>Set of {product.setQuantity} pieces</span>
+        <span>Set of {setQuantity} pieces</span>
         {discount > 0 && (
           <span className="inline-flex items-center gap-1 rounded-sm bg-accent-warm/25 px-2 py-0.5 text-ink">
             <span className="eyebrow text-[0.62rem]">
@@ -71,11 +74,6 @@ export function WholesalePriceBlock({
           </p>
         </div>
       </div>
-
-      <p className="mt-4 max-w-prose text-caption text-ink/55">
-        Placeholder wholesale pricing shown for development. Final rates and
-        set quantities are confirmed on WhatsApp enquiry.
-      </p>
     </div>
   );
 }

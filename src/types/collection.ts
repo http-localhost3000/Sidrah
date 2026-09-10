@@ -9,7 +9,6 @@ export type CategorySlug =
   | "cord-sets"
   | "cargo-pants"
   | "linen-pants"
-  | "kurta"
   | "imported";
 
 export interface Subcollection {

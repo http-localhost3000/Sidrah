@@ -6,7 +6,13 @@
  * Product[] that the existing frontend already consumes without modification.
  */
 
-export type BrandSlug = "stud" | "new-york" | "la" | "rock-and-ride" | "unbranded" | "g-boys" | "brooklyn" | "legend";
+export type BrandSlug =
+  | "rock-and-ride"
+  | "g-boys"
+  | "coming-up"
+  | "king-n-queenie"
+  | "olive-and-fig"
+  | "claphm";
 
 export type CategorySlug =
   | "shirts"
@@ -17,7 +23,6 @@ export type CategorySlug =
   | "cord-sets"
   | "cargo-pants"
   | "linen-pants"
-  | "kurta"
   | "imported";
 
 export type SubcategorySlug =
@@ -65,6 +70,19 @@ export type AgeRangeId =
   | "age-10-12y"
   | "age-12-14y"
   | "age-14-16y";
+
+/**
+ * One age/size pricing tier. Used when a product has different prices
+ * for different age ranges (e.g. 6–36 Months vs 2–16 Years).
+ */
+export interface PricingVariant {
+  label: string;
+  sizes: string[];
+  ageRangeIds: AgeRangeId[];
+  price: number;
+  discount?: number;
+  setQuantity: number;
+}
 
 /**
  * One color variant.
@@ -184,4 +202,12 @@ export interface CatalogEntry {
    * Defaults to true (visible).
    */
   active?: boolean;
+
+  /**
+   * Multi-tier pricing for products available in different age ranges at
+   * different prices. When present, top-level price/discount/setQuantity/sizes
+   * are from the first variant (for ProductCard display). The UI switches
+   * price dynamically as the customer selects a size.
+   */
+  pricingVariants?: PricingVariant[];
 }

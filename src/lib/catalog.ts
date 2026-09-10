@@ -1,13 +1,41 @@
 import { products } from "@/data/products";
-import { ageRanges } from "@/data/ages";
+import { ageRanges, shopAgeFilters } from "@/data/ages";
 import { brands } from "@/data/brands";
 import { collections } from "@/data/collections";
+import { normalizeBrandSlug } from "@/lib/brands";
 import type {
   Product,
   ProductFacets,
   ProductQuery,
   ProductSort,
 } from "@/types/product";
+
+export function resolveAgeRangeIds(ageParam?: string): string[] | undefined {
+  if (!ageParam) return undefined;
+  const a = ageParam.toLowerCase().trim();
+
+  if (a === "6-12-months" || a === "6-12m") return ["age-6-12m"];
+  if (a === "2-7-years" || a === "2-7y") return ["age-2-4y", "age-4-6y", "age-6-8y"];
+  if (a === "8-13-years" || a === "8-13y") return ["age-8-10y", "age-10-12y", "age-12-14y"];
+  if (a === "14-15-years" || a === "14-15y") return ["age-14-16y"];
+
+  if (a === "6-36-months" || a === "6-36m") return ["age-6-12m", "age-12-18m", "age-18-24m", "age-24-36m"];
+  if (a === "2-16-years" || a === "2-16y") return ["age-2-4y", "age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y", "age-14-16y"];
+  if (a === "8-16-years" || a === "8-16y") return ["age-8-10y", "age-10-12y", "age-12-14y", "age-14-16y"];
+
+  if (a === "2-8-years" || a === "2-8y") return ["age-2-4y", "age-4-6y", "age-6-8y"];
+  if (a === "4-14-years" || a === "4-14y") return ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"];
+  if (a === "1-5-years" || a === "1-5y") return ["age-12-18m", "age-18-24m", "age-24-36m", "age-2-4y", "age-4-6y"];
+
+  if (a === "1-15-years" || a === "1-15y") return ["age-12-18m", "age-18-24m", "age-24-36m", "age-2-4y", "age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y", "age-14-16y"];
+
+  const shopGroup = shopAgeFilters.find((g) => g.id === a);
+  if (shopGroup) return shopGroup.ageRangeIds;
+
+  if (a.startsWith("age-")) return [a];
+
+  return undefined;
+}
 
 // Single seam over the mock data source. Backend later replaces the bodies of
 // these functions without touching any component.
@@ -27,6 +55,7 @@ export function getProducts(query: ProductQuery = {}): Product[] {
     category,
     subcategory,
     brand,
+    age,
     ageIds,
     size,
     color,
@@ -39,14 +68,18 @@ export function getProducts(query: ProductQuery = {}): Product[] {
     sort = "featured",
   } = query;
 
+  const targetBrandSlug = normalizeBrandSlug(brand);
+  const targetAgeIds =
+    ageIds && ageIds.length > 0 ? ageIds : resolveAgeRangeIds(age);
+
   let items = products.filter((p) => {
     if (category && p.category !== category) return false;
     if (subcategory && p.subcategory !== subcategory) return false;
-    if (brand && p.brandSlug !== brand) return false;
+    if (targetBrandSlug && p.brandSlug !== targetBrandSlug) return false;
     if (
-      ageIds &&
-      ageIds.length > 0 &&
-      !ageIds.some((id) => p.ageRangeIds.includes(id))
+      targetAgeIds &&
+      targetAgeIds.length > 0 &&
+      !targetAgeIds.some((id) => p.ageRangeIds.includes(id))
     )
       return false;
     if (size && !p.sizes.includes(size)) return false;
@@ -63,6 +96,7 @@ export function getProducts(query: ProductQuery = {}): Product[] {
   items = [...items].sort(sortComparators[sort]);
   return items;
 }
+
 
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);

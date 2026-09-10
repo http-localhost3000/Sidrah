@@ -16,7 +16,7 @@ const tones: Record<Tone, string> = {
   accent: "bg-accent text-ink",
   warm: "bg-accent-warm text-ink",
   ink: "bg-ink text-page",
-  outline: "bg-transparent text-ink border border-ink/30",
+  outline: "bg-transparent text-ink border border-ink/50",
 };
 
 const sizes: Record<Size, string> = {

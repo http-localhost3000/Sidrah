@@ -54,8 +54,8 @@ export function Field({
 }
 
 export const fieldControl =
-  "block w-full bg-card border border-rule text-ink placeholder:text-ink/40 " +
+  "block w-full bg-card border border-ink/35 text-ink placeholder:text-ink/45 " +
   "px-4 py-3 text-body leading-6 transition-colors duration-150 ease-editorial " +
-  "hover:border-ink/40 focus:border-ink focus:outline-none " +
+  "hover:border-ink/60 focus:border-ink focus:outline-none " +
   "focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-page " +
   "disabled:cursor-not-allowed disabled:opacity-50 rounded-sm";

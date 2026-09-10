@@ -19,7 +19,7 @@ export default function BrandsPage() {
           <div className="mx-auto max-w-4xl text-center">
             <p className="eyebrow text-ink/55">The Brands</p>
             <h1 className="mt-6 font-display text-display-lg md:text-display-xl">
-              Four houses under one roof.
+              Six houses under one roof.
             </h1>
             <p className="mx-auto mt-8 max-w-editorial text-body-lg text-ink/75">
               Discover our curated house of boyswear brands, selected for

@@ -7,6 +7,15 @@ export interface ProductColor {
   hex: string;
 }
 
+export interface PricingVariant {
+  label: string;
+  sizes: string[];
+  ageRangeIds: string[];
+  price: number;
+  discount?: number;
+  setQuantity: number;
+}
+
 export interface Product {
   id: string;
   slug: Slug;
@@ -29,6 +38,7 @@ export interface Product {
   images: ImageAsset[];
   featured?: boolean;
   newArrival?: boolean;
+  pricingVariants?: PricingVariant[];
 }
 
 export interface ProductFacets {
@@ -52,6 +62,7 @@ export interface ProductQuery {
   category?: CategorySlug;
   subcategory?: string;
   brand?: string;
+  age?: string;
   /**
    * Match products whose ageRangeIds overlap ANY id in this list. Used by the
    * shop filters where a single UI bucket (e.g. "2–5 Years") expands to
@@ -68,3 +79,4 @@ export interface ProductQuery {
   featured?: boolean;
   sort?: ProductSort;
 }
+

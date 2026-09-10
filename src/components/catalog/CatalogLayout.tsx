@@ -9,6 +9,7 @@ import { SubcollectionTabs } from "@/components/filters/SubcollectionTabs";
 import type { FilterParams } from "@/lib/filters";
 import type { Product } from "@/types/product";
 import type { CategorySlug, Subcollection } from "@/types/collection";
+import type { BrandAgeRange } from "@/types/brand";
 
 interface CatalogLayoutProps {
   basePath: string;
@@ -16,6 +17,7 @@ interface CatalogLayoutProps {
   products: Product[];
   category?: CategorySlug;
   subcollections?: Subcollection[];
+  brandAgeRanges?: BrandAgeRange[];
   totalCount: number;
 }
 
@@ -31,6 +33,7 @@ export function CatalogLayout({
   products,
   category,
   subcollections,
+  brandAgeRanges,
   totalCount,
 }: CatalogLayoutProps) {
   const hasFilters = [
@@ -68,6 +71,7 @@ export function CatalogLayout({
               searchParams={searchParams}
               category={category}
               subcollections={subcollections}
+              brandAgeRanges={brandAgeRanges}
             />
           </div>
 
@@ -84,6 +88,7 @@ export function CatalogLayout({
                     searchParams={searchParams}
                     category={category}
                     subcollections={subcollections}
+                    brandAgeRanges={brandAgeRanges}
                     hideHeading
                   />
                 </MobileFilterDrawer>
@@ -114,3 +119,4 @@ export function CatalogLayout({
     </section>
   );
 }
+

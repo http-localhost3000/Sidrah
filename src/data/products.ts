@@ -1,5 +1,5 @@
 import type { Product } from "@/types/product";
-import { loadCatalog } from "@/lib/catalog-loader";
+import { loadCatalog, resolveBrandInfo } from "@/lib/catalog-loader";
 import catalogJson from "./catalog.json";
 import type { CatalogEntry } from "@/types/catalog";
 
@@ -14,11 +14,11 @@ const placeholder = (label: string): { src: string; alt: string } => ({
 const _mockProducts: Product[] = [
   {
     id: "p-001",
-    slug: "stud-oxford-plain-shirt",
-    sku: "STD-SH-001",
+    slug: "olive-and-fig-oxford-plain-shirt",
+    sku: "OF-SH-001",
     name: "Oxford Plain Shirt",
-    brand: "Stud",
-    brandSlug: "stud",
+    brand: "Olive + Fig",
+    brandSlug: "olive-and-fig",
     category: "shirts",
     subcategory: "plain",
     description:
@@ -42,11 +42,11 @@ const _mockProducts: Product[] = [
   },
   {
     id: "p-002",
-    slug: "new-york-tattersall-check-shirt",
-    sku: "NY-SH-014",
+    slug: "claphm-tattersall-check-shirt",
+    sku: "CLP-SH-014",
     name: "Tattersall Check Shirt",
-    brand: "New York",
-    brandSlug: "new-york",
+    brand: "Claphm",
+    brandSlug: "claphm",
     category: "shirts",
     subcategory: "checks",
     description:
@@ -68,11 +68,11 @@ const _mockProducts: Product[] = [
   },
   {
     id: "p-003",
-    slug: "la-heritage-stripe-shirt",
-    sku: "LA-SH-022",
+    slug: "claphm-heritage-stripe-shirt",
+    sku: "CLP-SH-022",
     name: "Heritage Stripe Shirt",
-    brand: "LA",
-    brandSlug: "la",
+    brand: "Claphm",
+    brandSlug: "claphm",
     category: "shirts",
     subcategory: "stripes",
     description:
@@ -525,7 +525,7 @@ const _mockProducts: Product[] = [
     name: "Festive Kurta",
     brand: "LA",
     brandSlug: "la",
-    category: "kurta",
+    category: "shirts",
     description:
       "Occasion kurta in a smooth cotton with subtle placket detailing.",
     price: 540,
@@ -658,11 +658,11 @@ const _mockProducts: Product[] = [
   },
   {
     id: "p-025",
-    slug: "stud-checked-shirt",
-    sku: "STD-SH-060",
+    slug: "olive-and-fig-checked-shirt",
+    sku: "OF-SH-060",
     name: "Micro Check Shirt",
-    brand: "Stud",
-    brandSlug: "stud",
+    brand: "Olive + Fig",
+    brandSlug: "olive-and-fig",
     category: "shirts",
     subcategory: "checks",
     description:
@@ -691,6 +691,17 @@ const catalogProducts = loadCatalog(catalogJson as CatalogEntry[]);
 // Merge: real catalog entries first, then any mock entries whose slug is not
 // already covered by a real product (prevents duplicate slugs during transition).
 const catalogSlugs = new Set(catalogProducts.map((p) => p.slug));
-const mockOnly = _mockProducts.filter((p) => !catalogSlugs.has(p.slug));
+const mockOnly = _mockProducts
+  .filter((p) => !catalogSlugs.has(p.slug))
+  .map((p) => {
+    const brandInfo = resolveBrandInfo({
+      category: p.category,
+      subcategory: p.subcategory,
+      name: p.name,
+      brandSlug: p.brandSlug,
+    });
+    return { ...p, ...brandInfo };
+  });
 
 export const products: Product[] = [...catalogProducts, ...mockOnly];
+

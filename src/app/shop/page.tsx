@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { CatalogHeader } from "@/components/catalog/CatalogHeader";
 import { CatalogLayout } from "@/components/catalog/CatalogLayout";
-import { getProducts } from "@/lib/catalog";
+import { getProducts, resolveAgeRangeIds } from "@/lib/catalog";
 import { normaliseSearchParams } from "@/lib/filters";
-import { shopAgeFilters } from "@/data/ages";
 import type { CategorySlug, Collection } from "@/types/collection";
 import type { ProductSort } from "@/types/product";
 import { getCollectionBySlug } from "@/lib/collections";
@@ -11,7 +10,7 @@ import { getCollectionBySlug } from "@/lib/collections";
 export const metadata: Metadata = {
   title: "Shop All",
   description:
-    "Sidrah Fashion wholesale catalogue — premium boys' wear across four brands and nine collections. Shipped from Mumbai to retailers worldwide.",
+    "Sidrah Fashion wholesale catalogue — premium boys' wear across six brands and nine collections. Shipped from Mumbai to retailers worldwide.",
 };
 
 const validSorts: ProductSort[] = [
@@ -33,9 +32,7 @@ export default function ShopPage({ searchParams }: ShopPageProps) {
     ? getCollectionBySlug(category)
     : undefined;
 
-  const ageIds = params.age
-    ? shopAgeFilters.find((g) => g.id === params.age)?.ageRangeIds
-    : undefined;
+  const ageIds = params.age ? resolveAgeRangeIds(params.age) : undefined;
 
   const sort = validSorts.includes(params.sort as ProductSort)
     ? (params.sort as ProductSort)
@@ -45,6 +42,7 @@ export default function ShopPage({ searchParams }: ShopPageProps) {
     category,
     subcategory: params.sub,
     brand: params.brand,
+    age: params.age,
     ageIds,
     fit: params.fit,
     sort,
@@ -59,7 +57,7 @@ export default function ShopPage({ searchParams }: ShopPageProps) {
             Boyswear, curated for retail<span className="italic">.</span>
           </>
         }
-        description="Sidrah Fashion supplies wholesale boys' wear to retailers, boutiques and multi-brand stores worldwide. Explore the full catalogue across four in-house brands and nine considered collections."
+        description="Sidrah Fashion supplies wholesale boys' wear to retailers, boutiques and multi-brand stores worldwide. Explore the full catalogue across six in-house brands and nine considered collections."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Shop" },
@@ -88,7 +86,6 @@ function validCategory(v?: string): CategorySlug | undefined {
     "cord-sets",
     "cargo-pants",
     "linen-pants",
-    "kurta",
     "imported",
   ];
   return list.includes(v as CategorySlug) ? (v as CategorySlug) : undefined;

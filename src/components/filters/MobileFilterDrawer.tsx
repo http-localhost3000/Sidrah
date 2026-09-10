@@ -53,7 +53,7 @@ export function MobileFilterDrawer({
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
         aria-expanded={open}
-        className="inline-flex h-10 items-center gap-2 border border-rule bg-card px-4 text-caption font-medium text-ink transition-colors hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
+        className="inline-flex h-10 items-center gap-2 border border-ink/35 bg-card px-4 text-caption font-medium text-ink transition-colors hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
       >
         <SlidersHorizontal className="h-4 w-4" aria-hidden="true" />
         <span>Filters</span>

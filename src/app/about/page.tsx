@@ -12,11 +12,14 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-page pt-section-sm pb-section">
+      <section className="bg-page">
         <Container>
-          <div className="mx-auto max-w-4xl">
-            <p className="eyebrow text-ink/55">About</p>
-            <h1 className="mt-6 font-display text-display-lg md:text-display-xl">
+          <div className="mx-auto flex min-h-[58svh] max-w-4xl flex-col justify-center py-20">
+            <p className="eyebrow flex items-center gap-2.5 text-ink/55">
+              <span aria-hidden="true" className="h-px w-4 bg-tan" />
+              About
+            </p>
+            <h1 className="mt-7 font-display text-display-lg md:text-display-xl">
               A wholesale house for premium boys&rsquo; wear.
             </h1>
             <div className="mt-10 space-y-6 text-body-lg text-ink/80">
@@ -41,9 +44,9 @@ export default function AboutPage() {
             <h2 className="font-display text-display-md">Our collections</h2>
             <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               <div>
-                <h3 className="eyebrow text-ink">Four brands</h3>
+                <h3 className="eyebrow text-ink">Six brands</h3>
                 <p className="mt-3 text-body text-ink/75">
-                  Every Sidrah Fashion piece belongs to one of our four
+                  Every Sidrah Fashion piece belongs to one of our six
                   in-house brands, each with its own point of view.
                 </p>
               </div>

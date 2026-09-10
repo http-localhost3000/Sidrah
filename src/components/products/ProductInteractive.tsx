@@ -15,17 +15,19 @@ interface ProductInteractiveProps {
   subcategoryLabel?: string;
 }
 
-/**
- * Client shell for the product-detail right column. Owns the selected-size
- * state so the price block, size selector, WhatsApp CTA and mobile sticky
- * bar all stay in sync from a single source of truth.
- */
 export function ProductInteractive({
   product,
   subcategoryLabel,
 }: ProductInteractiveProps) {
   const [selectedSize, setSelectedSize] = useState<string | undefined>();
   const [chartOpen, setChartOpen] = useState(false);
+
+  // Find the pricing variant that contains the currently selected size.
+  // Falls back to undefined (product-level price) when no size is selected
+  // or the product has no pricingVariants.
+  const activeVariant = selectedSize && product.pricingVariants
+    ? product.pricingVariants.find((v) => v.sizes.includes(selectedSize))
+    : undefined;
 
   return (
     <>
@@ -66,13 +68,20 @@ export function ProductInteractive({
           </p>
         </div>
 
-        <WholesalePriceBlock product={product} showPricing />
+        <WholesalePriceBlock
+          product={product}
+          showPricing
+          price={activeVariant?.price}
+          discount={activeVariant?.discount}
+          setQuantity={activeVariant?.setQuantity}
+        />
 
         <SizeSelector
           sizes={product.sizes}
           value={selectedSize}
           onChange={setSelectedSize}
           onOpenSizeChart={() => setChartOpen(true)}
+          pricingVariants={product.pricingVariants}
         />
 
         <EnquireWhatsApp product={product} selectedSize={selectedSize} />

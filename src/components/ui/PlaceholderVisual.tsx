@@ -1,6 +1,6 @@
 import { cn } from "@/lib/cn";
 
-type Aspect = "square" | "portrait" | "landscape" | "wide" | "tall" | "hero";
+type Aspect = "square" | "portrait" | "landscape" | "wide" | "tall" | "hero" | "editorial";
 type Tone = "cream" | "sage" | "ivory" | "warm";
 
 interface PlaceholderVisualProps {
@@ -18,6 +18,7 @@ const aspectClass: Record<Aspect, string> = {
   wide: "aspect-[16/9]",
   tall: "aspect-[3/4]",
   hero: "aspect-[3/4] lg:aspect-[4/5]",
+  editorial: "aspect-[2/3]",
 };
 
 // Neutral premium image placeholder. Renders a soft two-tone surface with a

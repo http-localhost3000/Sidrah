@@ -13,6 +13,30 @@ interface ActiveFiltersProps {
   subcollections?: Subcollection[];
 }
 
+function getAgeLabel(ageId?: string): string {
+  if (!ageId) return "";
+  const shopGroup = shopAgeFilters.find((x) => x.id === ageId);
+  if (shopGroup) return shopGroup.label;
+
+  const brands = getBrands();
+  for (const b of brands) {
+    if (b.ageRanges) {
+      const match = b.ageRanges.find((r) => r.id === ageId);
+      if (match) return match.label;
+    }
+  }
+
+  const parts = ageId.split("-");
+  if (parts.length >= 3) {
+    const min = parts[0];
+    const max = parts[1];
+    const unit = parts.slice(2).join(" ");
+    return `${min}–${max} ${unit.charAt(0).toUpperCase() + unit.slice(1)}`;
+  }
+
+  return ageId;
+}
+
 export function ActiveFilters({
   basePath,
   searchParams,
@@ -54,13 +78,12 @@ export function ActiveFilters({
   }
 
   if (searchParams.age) {
-    const a = shopAgeFilters.find((x) => x.id === searchParams.age);
-    if (a)
-      chips.push({
-        key: `age-${a.id}`,
-        label: `Age · ${a.label}`,
-        href: buildFilterHref(basePath, searchParams, { age: undefined }),
-      });
+    const ageLabel = getAgeLabel(searchParams.age);
+    chips.push({
+      key: `age-${searchParams.age}`,
+      label: `Age · ${ageLabel}`,
+      href: buildFilterHref(basePath, searchParams, { age: undefined }),
+    });
   }
 
   if (searchParams.fit) {
@@ -79,7 +102,8 @@ export function ActiveFilters({
         <Link
           key={chip.key}
           href={chip.href}
-          className="inline-flex items-center gap-2 rounded-sm border border-ink/25 bg-card px-3 py-1.5 text-caption text-ink transition-colors hover:border-ink hover:bg-ink hover:text-page"
+          scroll={false}
+          className="inline-flex items-center gap-2 rounded-sm border border-ink/45 bg-card px-3 py-1.5 text-caption text-ink transition-colors hover:border-ink hover:bg-ink hover:text-page"
         >
           <span>{chip.label}</span>
           <X className="h-3 w-3" aria-hidden="true" />
@@ -87,6 +111,7 @@ export function ActiveFilters({
       ))}
       <Link
         href={basePath}
+        scroll={false}
         className="ml-1 text-caption text-ink/60 underline-offset-4 hover:text-ink hover:underline"
       >
         Clear all

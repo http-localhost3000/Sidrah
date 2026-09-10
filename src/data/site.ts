@@ -24,7 +24,6 @@ export const site = {
 export const primaryNav = [
   { label: "Shop", href: "/shop" },
   { label: "Brands", href: "/brands" },
-  { label: "Shop by Age", href: "/ages" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -33,7 +32,6 @@ export const footerNav = {
   shop: [
     { label: "Shop All", href: "/shop" },
     { label: "New Arrivals", href: "/shop?new=1" },
-    { label: "Shop by Age", href: "/ages" },
     { label: "Brands", href: "/brands" },
   ],
   company: [

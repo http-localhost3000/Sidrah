@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
 import { WhatsAppIcon } from "@/components/whatsapp/WhatsAppIcon";
+import { RetailerForm } from "@/components/forms/RetailerForm";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export default function RetailerPage() {
 
   return (
     <>
+      {/* Hero */}
       <section className="bg-page pt-section-sm pb-section">
         <Container>
           <div className="mx-auto max-w-4xl">
@@ -23,16 +25,16 @@ export default function RetailerPage() {
             </h1>
             <p className="mt-8 max-w-prose text-body-lg text-ink/75">
               Join retailers buying premium boys&rsquo; wear for their stores
-              and businesses. Introduce yourself and we&rsquo;ll share the
-              current catalogue, wholesale terms and lead times.
+              and businesses. Fill in the form below or get in touch on
+              WhatsApp — we&rsquo;ll share the current catalogue, wholesale
+              terms and lead times.
             </p>
-
-            <div className="mt-12">
+            <div className="mt-8">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-14 items-center gap-3 rounded-sm border border-ink bg-ink px-8 text-[0.78rem] font-medium uppercase tracking-[0.14em] text-page transition-colors hover:bg-[#3a3934] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-page"
+                className="inline-flex h-12 items-center gap-3 rounded-sm border border-ink bg-ink px-6 text-[0.78rem] font-medium uppercase tracking-[0.14em] text-page transition-colors hover:bg-[#3a3934] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-page"
               >
                 <WhatsAppIcon className="h-5 w-5" />
                 <span>Get in Touch on WhatsApp</span>
@@ -42,7 +44,27 @@ export default function RetailerPage() {
         </Container>
       </section>
 
+      {/* Retailer Form */}
       <section className="bg-surface py-section">
+        <Container>
+          <div className="mx-auto max-w-4xl">
+            <h2 className="font-display text-display-md">
+              Apply to become a retailer.
+            </h2>
+            <p className="mt-4 max-w-prose text-body text-ink/65">
+              Tell us about your business and what you&rsquo;re looking for.
+              Fields marked <span className="text-accent-warm">*</span> are
+              required.
+            </p>
+            <div className="mt-10">
+              <RetailerForm />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Why Sidrah */}
+      <section className="bg-page py-section">
         <Container>
           <div className="mx-auto max-w-4xl">
             <h2 className="font-display text-display-md">Why Sidrah Fashion</h2>
@@ -80,23 +102,23 @@ export default function RetailerPage() {
         </Container>
       </section>
 
-      <section className="bg-page py-section">
+      {/* How it works */}
+      <section className="bg-surface py-section">
         <Container>
           <div className="mx-auto max-w-4xl">
             <h2 className="font-display text-display-md">How it works</h2>
             <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               <div>
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-rule bg-surface text-body font-medium text-ink">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-rule bg-page text-body font-medium text-ink">
                   1
                 </div>
-                <h3 className="mt-4 eyebrow text-ink">Get in touch</h3>
+                <h3 className="mt-4 eyebrow text-ink">Apply</h3>
                 <p className="mt-2 text-body text-ink/75">
-                  Contact us on WhatsApp to introduce yourself and your
-                  business.
+                  Fill in the retailer form above or contact us on WhatsApp.
                 </p>
               </div>
               <div>
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-rule bg-surface text-body font-medium text-ink">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-rule bg-page text-body font-medium text-ink">
                   2
                 </div>
                 <h3 className="mt-4 eyebrow text-ink">Review catalogue</h3>
@@ -106,7 +128,7 @@ export default function RetailerPage() {
                 </p>
               </div>
               <div>
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-rule bg-surface text-body font-medium text-ink">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-rule bg-page text-body font-medium text-ink">
                   3
                 </div>
                 <h3 className="mt-4 eyebrow text-ink">Place orders</h3>
@@ -120,39 +142,32 @@ export default function RetailerPage() {
         </Container>
       </section>
 
-      <section className="bg-surface py-section">
+      {/* Stats */}
+      <section className="bg-page py-section">
         <Container>
           <div className="mx-auto max-w-4xl">
             <h2 className="font-display text-display-md">Our collections</h2>
             <p className="mt-6 max-w-prose text-body-lg text-ink/75">
               Explore shirts, T-shirts, denim, track pants, shorts, cord sets,
-              cargo pants, linen pants and kurtas across four in-house brands.
+              cargo pants, linen pants and kurtas across six in-house brands.
               Age availability ranges from 6 months through 16 years depending
               on the collection.
             </p>
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               <div className="rounded-sm border border-rule bg-card p-6">
-                <p className="font-display text-[2rem] leading-none text-ink">
-                  4
-                </p>
+                <p className="font-display text-[2rem] leading-none text-ink">6</p>
                 <p className="mt-2 text-caption text-ink/60">Brands</p>
               </div>
               <div className="rounded-sm border border-rule bg-card p-6">
-                <p className="font-display text-[2rem] leading-none text-ink">
-                  9
-                </p>
+                <p className="font-display text-[2rem] leading-none text-ink">9</p>
                 <p className="mt-2 text-caption text-ink/60">Collections</p>
               </div>
               <div className="rounded-sm border border-rule bg-card p-6">
-                <p className="font-display text-[2rem] leading-none text-ink">
-                  6M–16Y
-                </p>
+                <p className="font-display text-[2rem] leading-none text-ink">6M–16Y</p>
                 <p className="mt-2 text-caption text-ink/60">Age range</p>
               </div>
               <div className="rounded-sm border border-rule bg-card p-6">
-                <p className="font-display text-[2rem] leading-none text-ink">
-                  Worldwide
-                </p>
+                <p className="font-display text-[2rem] leading-none text-ink">Worldwide</p>
                 <p className="mt-2 text-caption text-ink/60">Shipping</p>
               </div>
             </div>
@@ -160,15 +175,15 @@ export default function RetailerPage() {
         </Container>
       </section>
 
-      <section className="bg-page py-section">
+      {/* Final CTA */}
+      <section className="bg-surface py-section">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-display-md">
-              Ready to get started?
-            </h2>
+            <h2 className="font-display text-display-md">Ready to get started?</h2>
             <p className="mt-6 text-body-lg text-ink/75">
-              Contact the Sidrah Fashion team on WhatsApp to discuss wholesale
-              terms, minimum orders and current availability.
+              Use the form above or contact the Sidrah Fashion team directly on
+              WhatsApp to discuss wholesale terms, minimum orders and current
+              availability.
             </p>
             <div className="mt-10">
               <a

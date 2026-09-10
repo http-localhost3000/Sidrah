@@ -52,6 +52,7 @@ function Tab({
   return (
     <Link
       href={href}
+      scroll={false}
       aria-current={active ? "true" : undefined}
       className={cn(
         "inline-flex shrink-0 items-center whitespace-nowrap rounded-sm px-4 py-2 text-caption transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-page",

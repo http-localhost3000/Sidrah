@@ -15,26 +15,69 @@
  */
 
 import type { CatalogEntry } from "@/types/catalog";
-import type { Product, ProductColor } from "@/types/product";
+import type { Product, ProductColor, PricingVariant } from "@/types/product";
 import type { ImageAsset } from "@/types/common";
 
 // Brand display names keyed by slug — kept in sync with src/data/brands.ts
 const BRAND_NAMES: Record<string, string> = {
-  "stud": "Stud",
-  "new-york": "New York",
-  "la": "LA",
-  "rock-and-ride": "Rock & Ride",
-  "unbranded": "Unbranded",
+  "rock-and-ride": "Rock N Ride",
   "g-boys": "G-Boys",
-  "brooklyn": "Brooklyn",
-  "legend": "Legend",
+  "king-n-queenie": "King & Queenie",
+  "olive-and-fig": "Olive + Fig",
 };
+
+/**
+ * Resolves the exact brand assignment according to Sidrah Fashion brand specs:
+ * 1. ROCK N RIDE: Cord Sets, Brooklynn Print T-Shirts, Without Rib Track Pants, Rock N Ride Shorts, Front & Back Print T-Shirts.
+ * 2. G-BOYS: Cargo Pants, Linen Pants, Denim Jeans (Baggy & Regular), Printed/Plain/Stripes/Checks/Cargo Shirts, Shirt+Tee, Kurta.
+ * 3. KING & QUEENIE: With Rib Track Pants, Wording Shorts, Polo T-Shirts.
+ * 4. OLIVE + FIG: Explicitly identified Olive + Fig products only.
+ */
+export function resolveBrandInfo(entry: {
+  category: string;
+  subcategory?: string;
+  name: string;
+  brandSlug?: string;
+}): { brandSlug: string; brand: string } {
+  const cat = entry.category;
+  const sub = entry.subcategory || "";
+  const name = entry.name || "";
+  const existingBrand = entry.brandSlug || "";
+
+  if (existingBrand === "olive-and-fig" || existingBrand === "olive-+-fig") {
+    return { brandSlug: "olive-and-fig", brand: "Olive + Fig" };
+  }
+
+  if (
+    cat === "cord-sets" ||
+    (cat === "track-pants" && sub === "without-rib") ||
+    (cat === "shorts" && name.toLowerCase().includes("rock n ride")) ||
+    (cat === "t-shirts" && (sub === "downshoulder" || name.toLowerCase().includes("brooklyn"))) ||
+    (cat === "t-shirts" && sub === "round-neck") ||
+    existingBrand === "rock-and-ride"
+  ) {
+    return { brandSlug: "rock-and-ride", brand: "Rock N Ride" };
+  }
+
+  if (
+    (cat === "track-pants" && sub === "with-rib") ||
+    (cat === "shorts" && !name.toLowerCase().includes("rock n ride")) ||
+    (cat === "t-shirts" && sub === "polo") ||
+    existingBrand === "king-n-queenie"
+  ) {
+    return { brandSlug: "king-n-queenie", brand: "King & Queenie" };
+  }
+
+  return { brandSlug: "g-boys", brand: "G-Boys" };
+}
 
 /**
  * Convert a single CatalogEntry into a Product.
  * Missing optional fields receive safe defaults so nothing breaks.
  */
 function entryToProduct(entry: CatalogEntry): Product {
+  const { brandSlug, brand } = resolveBrandInfo(entry);
+
   // Build ImageAsset[] from the image filenames array.
   // By default images live at: public/images/products/<slug>/<filename>
   // If entry.imageFolder is set, that folder is used instead of the slug.
@@ -63,8 +106,8 @@ function entryToProduct(entry: CatalogEntry): Product {
     slug:        entry.slug,
     sku:         entry.sku,
     name:        entry.name,
-    brand:       entry.brandSlug ? (BRAND_NAMES[entry.brandSlug] ?? entry.brandSlug) : "",
-    brandSlug:   entry.brandSlug ?? "",
+    brand,
+    brandSlug,
     category:    entry.category,
     subcategory: entry.subcategory,
     description: entry.description ?? "",
@@ -78,8 +121,9 @@ function entryToProduct(entry: CatalogEntry): Product {
     fabric:      entry.fabric ?? "",
     fit:         entry.fit ?? "",
     images,
-    featured:    entry.featured ?? false,
-    newArrival:  entry.newArrival ?? false,
+    featured:        entry.featured ?? false,
+    newArrival:      entry.newArrival ?? false,
+    pricingVariants: entry.pricingVariants as PricingVariant[] | undefined,
   };
 }
 

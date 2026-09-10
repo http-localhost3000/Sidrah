@@ -15,6 +15,7 @@ export const collections: Collection[] = [
       { slug: "denim", label: "Denim" },
       { slug: "shirt-tshirt", label: "Shirt + T-Shirt" },
       { slug: "cargo-shirt", label: "Cargo Shirts" },
+      { slug: "kurta", label: "Kurta" },
     ],
   },
   {
@@ -53,14 +54,6 @@ export const collections: Collection[] = [
     ],
   },
   {
-    id: "col-shorts",
-    slug: "shorts",
-    title: "Shorts",
-    descriptor: "Everyday shorts for warmer months.",
-    editorialLine: "Warm-weather essentials.",
-    subcollections: [],
-  },
-  {
     id: "col-cord-sets",
     slug: "cord-sets",
     title: "Cord Sets",
@@ -70,6 +63,14 @@ export const collections: Collection[] = [
       { slug: "regular", label: "Regular" },
       { slug: "loose-fit", label: "Loose Fit" },
     ],
+  },
+  {
+    id: "col-shorts",
+    slug: "shorts",
+    title: "Shorts",
+    descriptor: "Everyday shorts for warmer months.",
+    editorialLine: "Warm-weather essentials.",
+    subcollections: [],
   },
   {
     id: "col-cargo-pants",
@@ -85,14 +86,6 @@ export const collections: Collection[] = [
     title: "Linen Pants",
     descriptor: "Breathable warm-weather trousers.",
     editorialLine: "Warm-weather trousers, done right.",
-    subcollections: [],
-  },
-  {
-    id: "col-kurta",
-    slug: "kurta",
-    title: "Kurta",
-    descriptor: "Occasion and festive dressing.",
-    editorialLine: "Occasion, considered.",
     subcollections: [],
   },
   {

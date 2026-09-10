@@ -3,18 +3,15 @@ import { Hero } from "@/components/hero/Hero";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { EditorialCollectionGrid } from "@/components/collections/EditorialCollectionGrid";
 import { ProductGrid } from "@/components/products/ProductGrid";
-import { AgeStrip } from "@/components/ages/AgeStrip";
 import { BrandGrid } from "@/components/brands/BrandGrid";
 import { WhySidrah } from "@/components/sections/WhySidrah";
 import { RetailerCta } from "@/components/sections/RetailerCta";
 import { AboutTeaser } from "@/components/sections/AboutTeaser";
-import { WorldwideShippingStrip } from "@/components/sections/WorldwideShippingStrip";
 import { InstagramSection } from "@/components/sections/InstagramSection";
 
 import { getCollections } from "@/lib/collections";
 import { getBrands } from "@/lib/brands";
 import { getFeaturedProducts, getNewArrivals } from "@/lib/catalog";
-import { homepageAgeGroups } from "@/data/ages";
 
 export default function Home() {
   const collections = getCollections();
@@ -45,7 +42,7 @@ export default function Home() {
                 Nine considered collections<span className="italic">.</span>
               </>
             }
-            description="Explore our boys' wear collections — shirts, T-shirts, denim, pants, shorts, cord sets and more, curated across four brands."
+            description="Explore our boys' wear collections — shirts, T-shirts, denim, pants, shorts, cord sets and more, curated across six brands."
             link={{ label: "Shop all", href: "/shop" }}
           />
           <div className="mt-block">
@@ -68,26 +65,12 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="bg-page">
-        <Container className="py-section">
-          <SectionHeader
-            eyebrow="Shop by Age"
-            title={<>From first months to sixteen<span className="italic">.</span></>}
-            description="Curated selections grouped by age. Every collection specifies actual size availability at the product level."
-            link={{ label: "All age ranges", href: "/ages" }}
-          />
-          <div className="mt-block">
-            <AgeStrip groups={homepageAgeGroups} />
-          </div>
-        </Container>
-      </section>
-
       <section className="bg-surface">
         <Container className="py-section">
           <SectionHeader
             eyebrow="Shop by Brands"
-            title={<>Four houses under one roof<span className="italic">.</span></>}
-            description="Every Sidrah Fashion piece belongs to one of our four in-house brands, each with its own point of view."
+            title={<>Six houses under one roof<span className="italic">.</span></>}
+            description="Every Sidrah Fashion piece belongs to one of our six in-house brands, each with its own point of view."
             link={{ label: "All brands", href: "/brands" }}
           />
           <div className="mt-block">
@@ -112,12 +95,6 @@ export default function Home() {
       <RetailerCta />
 
       <AboutTeaser />
-
-      <section className="bg-surface">
-        <Container className="py-section">
-          <WorldwideShippingStrip />
-        </Container>
-      </section>
 
       <InstagramSection />
     </>

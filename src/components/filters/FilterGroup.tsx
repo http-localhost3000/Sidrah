@@ -34,7 +34,7 @@ export function FilterGroup({
 
   return (
     <div className="border-t border-rule pt-5">
-      <h3 className="eyebrow text-ink/55">{title}</h3>
+      <h3 className="eyebrow text-ink/70">{title}</h3>
       <ul className="mt-4 space-y-2">
         <li>
           <FilterLink
@@ -74,23 +74,32 @@ function FilterLink({ href, selected, label }: FilterLinkProps) {
   return (
     <Link
       href={href}
+      scroll={false}
       aria-current={selected ? "true" : undefined}
       className={cn(
-        "group flex items-center justify-between gap-2 py-1 text-body transition-colors",
-        selected ? "text-ink" : "text-ink/60 hover:text-ink",
+        "group flex items-center justify-between gap-2 py-1.5 text-body transition-colors duration-200",
+        selected ? "text-ink" : "text-ink/70 hover:text-ink",
       )}
     >
-      <span className="inline-flex items-center gap-2.5">
+      <span className="inline-flex items-center gap-3">
         <span
           aria-hidden="true"
           className={cn(
-            "inline-block h-1.5 w-1.5 rounded-full border transition-colors",
+            "relative inline-flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full border bg-transparent",
+            "transition-all duration-300 ease-editorial",
             selected
-              ? "border-ink bg-ink"
-              : "border-ink/25 group-hover:border-ink/60",
+              ? "border-ink shadow-[0_0_0_3px_rgba(212,163,115,0.22)]"
+              : "border-ink/30 group-hover:border-ink/70",
           )}
-        />
-        {label}
+        >
+          <span
+            className={cn(
+              "h-2 w-2 rounded-full bg-ink transition-transform duration-300 ease-editorial",
+              selected ? "scale-100" : "scale-0",
+            )}
+          />
+        </span>
+        <span className={cn(selected && "font-medium")}>{label}</span>
       </span>
     </Link>
   );

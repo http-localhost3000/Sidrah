@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { getBrands } from "@/lib/brands";
+import { getBrands, getBrandBySlug } from "@/lib/brands";
 import { getCollections } from "@/lib/collections";
 import { getFacets } from "@/lib/catalog";
 import { shopAgeFilters } from "@/data/ages";
 import type { FilterParams } from "@/lib/filters";
 import type { CategorySlug, Subcollection } from "@/types/collection";
+import type { BrandAgeRange } from "@/types/brand";
 import { FilterGroup } from "./FilterGroup";
 
 interface FilterSidebarProps {
@@ -14,6 +15,8 @@ interface FilterSidebarProps {
   category?: CategorySlug;
   /** Subcollections available for the current category. */
   subcollections?: Subcollection[];
+  /** Specific age ranges available for the selected brand. */
+  brandAgeRanges?: BrandAgeRange[];
   /** Hide the wrapper heading (useful inside the mobile drawer, which has its own header). */
   hideHeading?: boolean;
 }
@@ -23,10 +26,22 @@ export function FilterSidebar({
   searchParams,
   category,
   subcollections,
+  brandAgeRanges,
   hideHeading = false,
 }: FilterSidebarProps) {
   const brands = getBrands();
   const collections = getCollections();
+
+  const selectedBrand = searchParams.brand
+    ? getBrandBySlug(searchParams.brand)
+    : undefined;
+
+  const ageOptions =
+    brandAgeRanges && brandAgeRanges.length > 0
+      ? brandAgeRanges.map((a) => ({ label: a.label, value: a.id }))
+      : selectedBrand && selectedBrand.ageRanges
+      ? selectedBrand.ageRanges.map((a) => ({ label: a.label, value: a.id }))
+      : shopAgeFilters.map((a) => ({ label: a.label, value: a.id }));
 
   // Available fits derived from the current scope so we never show a facet
   // that would return zero products.
@@ -48,6 +63,7 @@ export function FilterSidebar({
           {activeCount > 0 && (
             <Link
               href={basePath}
+              scroll={false}
               className="text-caption text-ink/60 underline-offset-4 hover:text-ink hover:underline"
             >
               Clear all
@@ -95,10 +111,7 @@ export function FilterSidebar({
         paramKey="age"
         basePath={basePath}
         searchParams={searchParams}
-        options={shopAgeFilters.map((a) => ({
-          label: a.label,
-          value: a.id,
-        }))}
+        options={ageOptions}
       />
 
       {facets.fits.length > 0 && (
@@ -113,3 +126,4 @@ export function FilterSidebar({
     </aside>
   );
 }
+
