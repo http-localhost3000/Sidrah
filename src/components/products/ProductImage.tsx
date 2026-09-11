@@ -79,7 +79,7 @@ export function ProductImage({
             fill
             sizes={sizesProp ?? "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 400px"}
             className="object-contain"
-            quality={85}
+            quality={90}
             priority={priority}
             onError={() => setErrored(true)}
           />

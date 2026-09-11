@@ -13,6 +13,12 @@ export interface AgeGroup {
 // to one or more underlying detailed age ranges so a single filter click
 // covers every product whose age availability falls within the bucket.
 export const shopAgeFilters: AgeGroup[] = [
+  { id: "6-36-months", label: "6–36 Months", href: "", ageRangeIds: ["6-36-months", "6-36m", "age-6-36m", "age-6-12m", "age-12-18m", "age-18-24m", "age-24-36m"] },
+  { id: "1-5-years", label: "1–5 Years", href: "", ageRangeIds: ["1-5-years", "1-5y", "age-1-5y", "age-12-18m", "age-18-24m", "age-24-36m", "age-2-4y"] },
+  { id: "2-8-years", label: "2–8 Years", href: "", ageRangeIds: ["2-8-years", "2-8y", "age-2-8y", "age-2-4y", "age-4-6y", "age-6-8y"] },
+  { id: "4-14-years", label: "4–14 Years", href: "", ageRangeIds: ["4-14-years", "4-14y", "age-4-14y", "age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"] },
+  { id: "2-16-years", label: "2–16 Years", href: "", ageRangeIds: ["2-16-years", "2-16y", "age-2-16y", "age-2-4y", "age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y", "age-14-16y"] },
+  { id: "8-16-years", label: "8–16 Years", href: "", ageRangeIds: ["8-16-years", "8-16y", "age-8-16y", "age-8-10y", "age-10-12y", "age-12-14y", "age-14-16y"] },
   { id: "af-6-12m", label: "6–12 Months", href: "", ageRangeIds: ["age-6-12m"] },
   { id: "af-12-18m", label: "12–18 Months", href: "", ageRangeIds: ["age-12-18m"] },
   { id: "af-18-24m", label: "18–24 Months", href: "", ageRangeIds: ["age-18-24m"] },

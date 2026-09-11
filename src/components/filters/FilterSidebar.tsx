@@ -32,8 +32,14 @@ export function FilterSidebar({
   const brands = getBrands();
   const collections = getCollections();
 
+  const brandSlugFromPath = basePath.startsWith("/brands/")
+    ? basePath.replace("/brands/", "").split("?")[0]
+    : undefined;
+
   const selectedBrand = searchParams.brand
     ? getBrandBySlug(searchParams.brand)
+    : brandSlugFromPath
+    ? getBrandBySlug(brandSlugFromPath)
     : undefined;
 
   const ageOptions =

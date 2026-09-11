@@ -14,27 +14,27 @@ export function resolveAgeRangeIds(ageParam?: string): string[] | undefined {
   if (!ageParam) return undefined;
   const a = ageParam.toLowerCase().trim();
 
-  if (a === "6-12-months" || a === "6-12m") return ["age-6-12m"];
-  if (a === "2-7-years" || a === "2-7y") return ["age-2-4y", "age-4-6y", "age-6-8y"];
-  if (a === "8-13-years" || a === "8-13y") return ["age-8-10y", "age-10-12y", "age-12-14y"];
-  if (a === "14-15-years" || a === "14-15y") return ["age-14-16y"];
+  if (a === "6-12-months" || a === "6-12m") return ["6-12-months", "6-12m", "age-6-12m"];
+  if (a === "2-7-years" || a === "2-7y") return ["2-7-years", "2-7y", "age-2-7y", "age-2-4y", "age-4-6y", "age-6-8y"];
+  if (a === "8-13-years" || a === "8-13y") return ["8-13-years", "8-13y", "age-8-13y", "age-8-10y", "age-10-12y", "age-12-14y"];
+  if (a === "14-15-years" || a === "14-15y") return ["14-15-years", "14-15y", "age-14-15y", "age-14-16y"];
 
-  if (a === "6-36-months" || a === "6-36m") return ["age-6-12m", "age-12-18m", "age-18-24m", "age-24-36m"];
-  if (a === "2-16-years" || a === "2-16y") return ["age-2-4y", "age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y", "age-14-16y"];
-  if (a === "8-16-years" || a === "8-16y") return ["age-8-10y", "age-10-12y", "age-12-14y", "age-14-16y"];
+  if (a === "6-36-months" || a === "6-36m") return ["6-36-months", "6-36m", "age-6-36m", "age-6-12m", "age-12-18m", "age-18-24m", "age-24-36m"];
+  if (a === "2-16-years" || a === "2-16y") return ["2-16-years", "2-16y", "age-2-16y", "age-2-4y", "age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y", "age-14-16y"];
+  if (a === "8-16-years" || a === "8-16y") return ["8-16-years", "8-16y", "age-8-16y", "age-8-10y", "age-10-12y", "age-12-14y", "age-14-16y"];
 
-  if (a === "2-8-years" || a === "2-8y") return ["age-2-4y", "age-4-6y", "age-6-8y"];
-  if (a === "4-14-years" || a === "4-14y") return ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"];
-  if (a === "1-5-years" || a === "1-5y") return ["age-12-18m", "age-18-24m", "age-24-36m", "age-2-4y", "age-4-6y"];
+  if (a === "2-8-years" || a === "2-8y") return ["2-8-years", "2-8y", "age-2-8y", "age-2-4y", "age-4-6y", "age-6-8y"];
+  if (a === "4-14-years" || a === "4-14y") return ["4-14-years", "4-14y", "age-4-14y", "age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"];
+  if (a === "1-5-years" || a === "1-5y") return ["1-5-years", "1-5y", "age-1-5y", "age-12-18m", "age-18-24m", "age-24-36m", "age-2-4y"];
 
-  if (a === "1-15-years" || a === "1-15y") return ["age-12-18m", "age-18-24m", "age-24-36m", "age-2-4y", "age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y", "age-14-16y"];
+  if (a === "1-15-years" || a === "1-15y") return ["1-15-years", "1-15y", "age-1-15y", "age-12-18m", "age-18-24m", "age-24-36m", "age-2-4y", "age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y", "age-14-16y"];
 
   const shopGroup = shopAgeFilters.find((g) => g.id === a);
   if (shopGroup) return shopGroup.ageRangeIds;
 
   if (a.startsWith("age-")) return [a];
 
-  return undefined;
+  return [a];
 }
 
 // Single seam over the mock data source. Backend later replaces the bodies of
@@ -69,6 +69,7 @@ export function getProducts(query: ProductQuery = {}): Product[] {
   } = query;
 
   const targetBrandSlug = normalizeBrandSlug(brand);
+  const targetAge = age ? age.toLowerCase().trim() : undefined;
   const targetAgeIds =
     ageIds && ageIds.length > 0 ? ageIds : resolveAgeRangeIds(age);
 
@@ -76,12 +77,120 @@ export function getProducts(query: ProductQuery = {}): Product[] {
     if (category && p.category !== category) return false;
     if (subcategory && p.subcategory !== subcategory) return false;
     if (targetBrandSlug && p.brandSlug !== targetBrandSlug) return false;
-    if (
-      targetAgeIds &&
-      targetAgeIds.length > 0 &&
-      !targetAgeIds.some((id) => p.ageRangeIds.includes(id))
-    )
-      return false;
+
+    if (targetAge) {
+      const a = targetAge.toLowerCase().trim();
+      const pAgeTags = p.ageRangeIds.map((t) => t.toLowerCase());
+
+      const brandAgeGroupTags = [
+        "1-5-years", "1-5y", "age-1-5y",
+        "4-14-years", "4-14y", "age-4-14y",
+        "6-36-months", "6-36m", "age-6-36m",
+        "2-8-years", "2-8y", "age-2-8y",
+        "2-16-years", "2-16y", "age-2-16y",
+        "8-16-years", "8-16y", "age-8-16y",
+        "6-12-months", "6-12m", "age-6-12m",
+        "2-7-years", "2-7y", "age-2-7y",
+        "8-13-years", "8-13y", "age-8-13y",
+        "14-15-years", "14-15y", "age-14-15y",
+        "1-15-years", "1-15y", "age-1-15y",
+      ];
+
+      const productExplicitAgeTag = pAgeTags.find((t) =>
+        brandAgeGroupTags.includes(t)
+      );
+
+      if (productExplicitAgeTag) {
+        if (a === "4-14-years" || a === "4-14y") {
+          if (!["4-14-years", "4-14y", "age-4-14y"].includes(productExplicitAgeTag))
+            return false;
+        } else if (a === "1-5-years" || a === "1-5y") {
+          if (!["1-5-years", "1-5y", "age-1-5y"].includes(productExplicitAgeTag))
+            return false;
+        } else if (a === "6-36-months" || a === "6-36m") {
+          if (!["6-36-months", "6-36m", "age-6-36m"].includes(productExplicitAgeTag))
+            return false;
+        } else if (a === "2-8-years" || a === "2-8y") {
+          if (!["2-8-years", "2-8y", "age-2-8y"].includes(productExplicitAgeTag))
+            return false;
+        } else if (a === "2-16-years" || a === "2-16y") {
+          if (!["2-16-years", "2-16y", "age-2-16y"].includes(productExplicitAgeTag))
+            return false;
+        } else if (a === "8-16-years" || a === "8-16y") {
+          if (!["8-16-years", "8-16y", "age-8-16y"].includes(productExplicitAgeTag))
+            return false;
+        } else if (a === "6-12-months" || a === "6-12m") {
+          if (!["6-12-months", "6-12m", "age-6-12m"].includes(productExplicitAgeTag))
+            return false;
+        } else if (a === "2-7-years" || a === "2-7y") {
+          if (!["2-7-years", "2-7y", "age-2-7y"].includes(productExplicitAgeTag))
+            return false;
+        } else if (a === "8-13-years" || a === "8-13y") {
+          if (!["8-13-years", "8-13y", "age-8-13y"].includes(productExplicitAgeTag))
+            return false;
+        } else if (a === "14-15-years" || a === "14-15y") {
+          if (!["14-15-years", "14-15y", "age-14-15y"].includes(productExplicitAgeTag))
+            return false;
+        } else if (a === "1-15-years" || a === "1-15y") {
+          if (!["1-15-years", "1-15y", "age-1-15y"].includes(productExplicitAgeTag))
+            return false;
+        }
+      } else {
+        if (a === "4-14-years" || a === "4-14y") {
+          const maxOnly5Y =
+            p.sizes.every((s) =>
+              [
+                "6M",
+                "9M",
+                "12M",
+                "18M",
+                "24M",
+                "36M",
+                "1Y",
+                "2Y",
+                "3Y",
+                "4Y",
+                "5Y",
+                "6Y",
+              ].includes(s)
+            ) &&
+            !p.sizes.some((s) =>
+              [
+                "8Y",
+                "9Y",
+                "10Y",
+                "11Y",
+                "12Y",
+                "13Y",
+                "14Y",
+                "15Y",
+                "16Y",
+              ].includes(s)
+            );
+          if (maxOnly5Y) return false;
+        } else if (a === "1-5-years" || a === "1-5y") {
+          const hasBigSizes = p.sizes.some((s) =>
+            ["8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y", "15Y", "16Y"].includes(
+              s
+            )
+          );
+          if (hasBigSizes) return false;
+        } else if (a === "6-36-months" || a === "6-36m") {
+          const hasBigSizes = p.sizes.some((s) =>
+            ["4Y", "5Y", "6Y", "8Y", "10Y", "12Y", "14Y", "16Y"].includes(s)
+          );
+          if (hasBigSizes) return false;
+        }
+
+        if (
+          targetAgeIds &&
+          targetAgeIds.length > 0 &&
+          !targetAgeIds.some((id) => pAgeTags.includes(id.toLowerCase()))
+        ) {
+          return false;
+        }
+      }
+    }
     if (size && !p.sizes.includes(size)) return false;
     if (color && !p.colors.some((c) => c.id === color)) return false;
     if (fabric && p.fabric !== fabric) return false;

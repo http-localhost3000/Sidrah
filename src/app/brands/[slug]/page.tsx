@@ -65,6 +65,7 @@ export default function BrandPage({ params, searchParams }: BrandPageProps) {
         basePath={`/brands/${brand.slug}`}
         searchParams={filters}
         products={products}
+        brandAgeRanges={brand.ageRanges}
         totalCount={totalCount}
       />
     </>

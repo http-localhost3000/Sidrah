@@ -6,7 +6,7 @@ export function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
-      fill="currentColor"
+      fill="#25D366"
       aria-hidden="true"
       {...props}
     >

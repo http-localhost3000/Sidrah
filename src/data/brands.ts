@@ -63,8 +63,10 @@ export const brands: Brand[] = [
     description:
       "Claphm brings heritage-inspired shirting and refined checks to the boyswear aisle — crafted for effortless everyday dressing with a distinctly classic edge.",
     ageRanges: [
-      { id: "18-36-months", label: "18–36 Months", ageRangeIds: ["age-18-24m", "age-24-36m"] },
-      { id: "2-6-years", label: "2–6 Years", ageRangeIds: ["age-2-4y", "age-4-6y"] },
+      { id: "6-36-months", label: "6–36 Months", ageRangeIds: ["age-6-12m", "age-12-18m", "age-18-24m", "age-24-36m"] },
+      { id: "2-8-years", label: "2–8 Years", ageRangeIds: ["age-2-4y", "age-4-6y", "age-6-8y"] },
+      { id: "4-14-years", label: "4–14 Years", ageRangeIds: ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"] },
+      { id: "1-5-years", label: "1–5 Years", ageRangeIds: ["age-12-18m", "age-18-24m", "age-24-36m", "age-2-4y", "age-4-6y"] },
     ],
   },
   {
@@ -74,6 +76,10 @@ export const brands: Brand[] = [
     tagline: "Something new is on its way",
     description:
       "A brand-new addition to the Sidrah Fashion family. Coming Up is launching soon — stay tuned for fresh styles and exciting new collections.",
-    ageRanges: [],
+    ageRanges: [
+      { id: "6-36-months", label: "6–36 Months", ageRangeIds: ["age-6-12m", "age-12-18m", "age-18-24m", "age-24-36m"] },
+      { id: "2-16-years", label: "2–16 Years", ageRangeIds: ["age-2-4y", "age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y", "age-14-16y"] },
+      { id: "4-14-years", label: "4–14 Years", ageRangeIds: ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"] },
+    ],
   },
 ];
