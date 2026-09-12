@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { LinkButton } from "@/components/ui/Button";
-import { PlaceholderVisual } from "@/components/ui/PlaceholderVisual";
 
 export function RetailerCta() {
   return (
@@ -26,11 +26,17 @@ export function RetailerCta() {
           </div>
         </div>
         <div className="lg:col-span-5">
-          <div className="border border-page/10">
-            <PlaceholderVisual aspect="portrait" tone="sage" label="Retailer · Sidrah" />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-sm border border-page/10">
+            <Image
+              src="/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/WhatsApp%20Image%202026-08-25%20at%205.34.31%20PM.jpeg"
+              alt="Sidrah Fashion Wholesale Premium Boyswear Collection"
+              fill
+              className="object-cover object-top transition-transform duration-700 hover:scale-105"
+            />
           </div>
         </div>
       </Container>
     </section>
   );
 }
+

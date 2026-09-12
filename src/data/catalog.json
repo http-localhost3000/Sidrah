@@ -1,5 +1,143 @@
 [
   {
+    "id": "rnr-ds-001",
+    "slug": "rock-and-ride-vintage-wash-denim-shirt",
+    "sku": "RNR-DS-001",
+    "name": "Rock N Ride Vintage Wash Denim Shirt",
+    "brandSlug": "rock-and-ride",
+    "category": "shirts",
+    "subcategory": "denim",
+    "description": "Premium Rock N Ride vintage wash denim shirt featuring chest flap pockets, durable snap buttons, and comfortable soft-touch denim cotton cut for boys aged 2–16 years.",
+    "price": 360,
+    "discount": 10,
+    "setQuantity": 10,
+    "sizes": [
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y",
+      "15Y",
+      "16Y"
+    ],
+    "ageRangeIds": [
+      "age-2-4y",
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y",
+      "age-14-16y"
+    ],
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/Denims Rock N Ride Shirts",
+    "images": [
+      "Creating_kids_clothing_images_2K_20260912124552 (1).jpeg"
+    ],
+    "active": true,
+    "featured": true,
+    "newArrival": true
+  },
+  {
+    "id": "rnr-ds-002",
+    "slug": "rock-and-ride-light-wash-denim-shirt",
+    "sku": "RNR-DS-002",
+    "name": "Rock N Ride Light Wash Denim Shirt",
+    "brandSlug": "rock-and-ride",
+    "category": "shirts",
+    "subcategory": "denim",
+    "description": "Stylish Rock N Ride light wash denim shirt with tailored collar, chest pockets and Western-inspired stitching details for boys aged 2–16 years.",
+    "price": 360,
+    "discount": 10,
+    "setQuantity": 10,
+    "sizes": [
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y",
+      "15Y",
+      "16Y"
+    ],
+    "ageRangeIds": [
+      "age-2-4y",
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y",
+      "age-14-16y"
+    ],
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/Denims Rock N Ride Shirts",
+    "images": [
+      "Creating_kids_clothing_images_2K_20260912124552 (2).jpeg"
+    ],
+    "active": true,
+    "featured": true,
+    "newArrival": true
+  },
+  {
+    "id": "rnr-ds-003",
+    "slug": "rock-and-ride-classic-indigo-denim-shirt",
+    "sku": "RNR-DS-003",
+    "name": "Rock N Ride Classic Indigo Denim Shirt",
+    "brandSlug": "rock-and-ride",
+    "category": "shirts",
+    "subcategory": "denim",
+    "description": "Classic indigo Rock N Ride denim shirt featuring twin buttoned pockets, contrast stitching and durable cotton denim construction for boys aged 2–16 years.",
+    "price": 360,
+    "discount": 10,
+    "setQuantity": 10,
+    "sizes": [
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y",
+      "15Y",
+      "16Y"
+    ],
+    "ageRangeIds": [
+      "age-2-4y",
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y",
+      "age-14-16y"
+    ],
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/Denims Rock N Ride Shirts",
+    "images": [
+      "Creating_kids_clothing_images_2K_20260912124552 (3).jpeg"
+    ],
+    "active": true,
+    "featured": true,
+    "newArrival": true
+  },
+  {
     "id": "ps-plain-001",
     "slug": "g-boys-navy-solid-shirt",
     "sku": "GB-PS-001",
@@ -21785,13 +21923,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Dark Blue", "hex": "#3B5B85" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Blue",
+        "hex": "#3B5B85"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0005~2.jpg"],
+    "images": [
+      "IMG-20260911-WA0005~2.jpg"
+    ],
     "active": true,
     "featured": true,
     "newArrival": true
@@ -21808,13 +21971,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Mid Blue", "hex": "#4E6785" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Mid Blue",
+        "hex": "#4E6785"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0005~3.jpg"],
+    "images": [
+      "IMG-20260911-WA0005~3.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -21831,13 +22019,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Light Blue", "hex": "#7BAFD4" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Light Blue",
+        "hex": "#7BAFD4"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0005~4.jpg"],
+    "images": [
+      "IMG-20260911-WA0005~4.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -21854,13 +22067,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Dark Grey", "hex": "#3A3A3A" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Grey",
+        "hex": "#3A3A3A"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Slim",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0006~2.jpg"],
+    "images": [
+      "IMG-20260911-WA0006~2.jpg"
+    ],
     "active": true,
     "featured": true,
     "newArrival": true
@@ -21877,13 +22115,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Mid Blue", "hex": "#4E6785" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Mid Blue",
+        "hex": "#4E6785"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Slim",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0006~3.jpg"],
+    "images": [
+      "IMG-20260911-WA0006~3.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -21900,13 +22163,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Mid Blue", "hex": "#4E6785" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Mid Blue",
+        "hex": "#4E6785"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0006~4.jpg"],
+    "images": [
+      "IMG-20260911-WA0006~4.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -21923,13 +22211,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Mid Blue", "hex": "#4E6785" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Mid Blue",
+        "hex": "#4E6785"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0006~5.jpg"],
+    "images": [
+      "IMG-20260911-WA0006~5.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -21946,13 +22259,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Light Blue", "hex": "#7BAFD4" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Light Blue",
+        "hex": "#7BAFD4"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Slim",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0007~2.jpg"],
+    "images": [
+      "IMG-20260911-WA0007~2.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -21969,13 +22307,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Light Blue", "hex": "#7BAFD4" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Light Blue",
+        "hex": "#7BAFD4"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0007~3.jpg"],
+    "images": [
+      "IMG-20260911-WA0007~3.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -21992,13 +22355,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Mid Blue", "hex": "#4E6785" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Mid Blue",
+        "hex": "#4E6785"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0007~4.jpg"],
+    "images": [
+      "IMG-20260911-WA0007~4.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22015,13 +22403,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Mid Blue", "hex": "#4E6785" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Mid Blue",
+        "hex": "#4E6785"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0007~5.jpg"],
+    "images": [
+      "IMG-20260911-WA0007~5.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22038,13 +22451,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Dark Blue", "hex": "#3B5B85" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Blue",
+        "hex": "#3B5B85"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0008~2.jpg"],
+    "images": [
+      "IMG-20260911-WA0008~2.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22061,13 +22499,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Dark Blue", "hex": "#3B5B85" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Blue",
+        "hex": "#3B5B85"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0008~3.jpg"],
+    "images": [
+      "IMG-20260911-WA0008~3.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22084,13 +22547,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Light Blue", "hex": "#7BAFD4" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Light Blue",
+        "hex": "#7BAFD4"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Slim",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0008~4.jpg"],
+    "images": [
+      "IMG-20260911-WA0008~4.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22107,13 +22595,38 @@
     "price": 460,
     "discount": 10,
     "setQuantity": 8,
-    "sizes": ["4Y", "5Y", "6Y", "7Y", "8Y", "9Y", "10Y", "11Y", "12Y", "13Y", "14Y"],
-    "ageRangeIds": ["age-4-6y", "age-6-8y", "age-8-10y", "age-10-12y", "age-12-14y"],
-    "colors": [{ "name": "Light Blue", "hex": "#7BAFD4" }],
+    "sizes": [
+      "4Y",
+      "5Y",
+      "6Y",
+      "7Y",
+      "8Y",
+      "9Y",
+      "10Y",
+      "11Y",
+      "12Y",
+      "13Y",
+      "14Y"
+    ],
+    "ageRangeIds": [
+      "age-4-6y",
+      "age-6-8y",
+      "age-8-10y",
+      "age-10-12y",
+      "age-12-14y"
+    ],
+    "colors": [
+      {
+        "name": "Light Blue",
+        "hex": "#7BAFD4"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Slim",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/4-14 yrs",
-    "images": ["IMG-20260911-WA0008~5.jpg"],
+    "images": [
+      "IMG-20260911-WA0008~5.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22130,13 +22643,32 @@
     "price": 360,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Dark Grey", "hex": "#3A3A3A" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Grey",
+        "hex": "#3A3A3A"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0009~2.jpg"],
+    "images": [
+      "IMG-20260911-WA0009~2.jpg"
+    ],
     "active": true,
     "featured": true,
     "newArrival": true
@@ -22153,13 +22685,32 @@
     "price": 360,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Dark Grey", "hex": "#3A3A3A" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Grey",
+        "hex": "#3A3A3A"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0009~3.jpg"],
+    "images": [
+      "IMG-20260911-WA0009~3.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22176,13 +22727,32 @@
     "price": 360,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Dark Grey", "hex": "#3A3A3A" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Grey",
+        "hex": "#3A3A3A"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0009~4.jpg"],
+    "images": [
+      "IMG-20260911-WA0009~4.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22199,13 +22769,32 @@
     "price": 360,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Dark Grey", "hex": "#3A3A3A" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Grey",
+        "hex": "#3A3A3A"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0009~5.jpg"],
+    "images": [
+      "IMG-20260911-WA0009~5.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22222,13 +22811,32 @@
     "price": 360,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Dark Grey", "hex": "#3A3A3A" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Grey",
+        "hex": "#3A3A3A"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0009~6.jpg"],
+    "images": [
+      "IMG-20260911-WA0009~6.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22245,13 +22853,32 @@
     "price": 360,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Dark Grey", "hex": "#3A3A3A" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Grey",
+        "hex": "#3A3A3A"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0009~7.jpg"],
+    "images": [
+      "IMG-20260911-WA0009~7.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22268,13 +22895,32 @@
     "price": 380,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Dark Grey", "hex": "#3A3A3A" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Grey",
+        "hex": "#3A3A3A"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0010~2.jpg"],
+    "images": [
+      "IMG-20260911-WA0010~2.jpg"
+    ],
     "active": true,
     "featured": true,
     "newArrival": true
@@ -22291,13 +22937,32 @@
     "price": 380,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Dark Grey", "hex": "#3A3A3A" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Grey",
+        "hex": "#3A3A3A"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0010~3.jpg"],
+    "images": [
+      "IMG-20260911-WA0010~3.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22314,13 +22979,32 @@
     "price": 380,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Dark Grey", "hex": "#3A3A3A" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Dark Grey",
+        "hex": "#3A3A3A"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0010~4.jpg"],
+    "images": [
+      "IMG-20260911-WA0010~4.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22337,13 +23021,32 @@
     "price": 380,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Mid Blue", "hex": "#4E6785" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Mid Blue",
+        "hex": "#4E6785"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0011~2.jpg"],
+    "images": [
+      "IMG-20260911-WA0011~2.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22360,13 +23063,32 @@
     "price": 380,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Mid Blue", "hex": "#4E6785" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Mid Blue",
+        "hex": "#4E6785"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0011~3.jpg"],
+    "images": [
+      "IMG-20260911-WA0011~3.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22383,13 +23105,32 @@
     "price": 380,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Mid Blue", "hex": "#4E6785" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Mid Blue",
+        "hex": "#4E6785"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0011~4.jpg"],
+    "images": [
+      "IMG-20260911-WA0011~4.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true
@@ -22406,13 +23147,32 @@
     "price": 380,
     "discount": 10,
     "setQuantity": 6,
-    "sizes": ["12M", "18M", "2Y", "3Y", "4Y", "5Y"],
-    "ageRangeIds": ["age-12-18m", "age-18-24m", "age-2-4y", "age-4-6y"],
-    "colors": [{ "name": "Mid Blue", "hex": "#4E6785" }],
+    "sizes": [
+      "12M",
+      "18M",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "colors": [
+      {
+        "name": "Mid Blue",
+        "hex": "#4E6785"
+      }
+    ],
     "fabric": "Cotton Denim",
     "fit": "Regular",
     "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE/1 - 5 yrs",
-    "images": ["IMG-20260911-WA0011~5.jpg"],
+    "images": [
+      "IMG-20260911-WA0011~5.jpg"
+    ],
     "active": true,
     "featured": false,
     "newArrival": true

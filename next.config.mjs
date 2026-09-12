@@ -2,11 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [],
-    // SVG placeholders in public/images/hero/ — safe because they are
-    // local assets we control. contentDispositionType is "inline" so
-    // product JPEG images display in the browser rather than downloading.
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
     dangerouslyAllowSVG: true,
     contentDispositionType: "inline",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -14,3 +17,5 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+

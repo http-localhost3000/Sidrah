@@ -262,6 +262,51 @@ export function getNewArrivals(limit = 8): Product[] {
   return getProducts({ newArrival: true, sort: "newest" }).slice(0, limit);
 }
 
+export function getDiverseProducts(
+  limit = 4,
+  preferredCategories: string[] = ["shirts", "t-shirts", "denims", "cord-sets"],
+  overrides?: Record<string, string>
+): Product[] {
+  const all = getProducts();
+  const selected: Product[] = [];
+  const usedCategories = new Set<string>();
+
+  for (const cat of preferredCategories) {
+    const overrideId = overrides?.[cat];
+    const match =
+      (overrideId ? all.find((p) => p.id === overrideId) : undefined) ||
+      all.find((p) => p.category === cat && p.newArrival) ||
+      all.find((p) => p.category === cat && p.featured) ||
+      all.find((p) => p.category === cat);
+    if (match && !selected.some((s) => s.id === match.id)) {
+      selected.push(match);
+      usedCategories.add(cat);
+    }
+  }
+
+  if (selected.length < limit) {
+    for (const p of all) {
+      if (selected.length >= limit) break;
+      if (!usedCategories.has(p.category) && !selected.some((s) => s.id === p.id)) {
+        selected.push(p);
+        usedCategories.add(p.category);
+      }
+    }
+  }
+
+  if (selected.length < limit) {
+    for (const p of all) {
+      if (selected.length >= limit) break;
+      if (!selected.some((s) => s.id === p.id)) {
+        selected.push(p);
+      }
+    }
+  }
+
+  return selected.slice(0, limit);
+}
+
+
 export function getFacets(query: ProductQuery = {}): ProductFacets {
   const items = getProducts(query);
   const countBy = <T,>(

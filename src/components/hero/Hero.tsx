@@ -1,15 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { CSSProperties } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { LinkButton } from "@/components/ui/Button";
 
-// Editorial hero. The centre stage is intentionally empty for now — the
-// ghost brand typography, floating garment cutout and italic script accent
-// line were removed pending the client's direction on what should anchor
-// the hero. The bottom band carries the wholesale copy + CTAs (left) and
-// the season-edit card (right); every entrance is pure CSS and disabled
-// under prefers-reduced-motion.
 export function Hero() {
   return (
     <section className="relative flex min-h-[92svh] flex-col overflow-hidden bg-page">
@@ -24,11 +19,31 @@ export function Hero() {
       </Container>
 
       {/* ── stage ───────────────────────────────────────────────────── */}
-      <div className="relative h-[52svh] min-h-[380px] lg:h-[56svh] lg:min-h-[460px]">
+      <div className="relative h-[52svh] min-h-[380px] overflow-hidden lg:h-[56svh] lg:min-h-[460px]">
+        <Image
+          src="https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?q=95&w=2400&auto=format&fit=crop"
+          alt="Sidrah Fashion Premium Boyswear Clothing & Apparel Collection"
+          fill
+          priority
+          unoptimized
+          className="object-cover object-center"
+        />
+        {/* Subtle gradient vignette to seamlessly bleed into the page background */}
+        <div className="absolute inset-0 bg-gradient-to-t from-page via-page/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-page/40 via-transparent to-transparent" />
+        
+        {/* Ghost typography brand watermark */}
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <span className="select-none font-display text-[14vw] font-bold tracking-tight text-ink/10">
+            SIDRAH
+          </span>
+        </div>
+
         <h1 className="sr-only">
           Sidrah Fashion — premium boyswear wholesale
         </h1>
       </div>
+
 
       {/* ── bottom band ─────────────────────────────────────────────── */}
       <Container className="relative z-30 grid gap-8 pb-8 pt-2 lg:grid-cols-12 lg:items-end lg:gap-10 lg:pb-10">

@@ -11,23 +11,20 @@ import { InstagramSection } from "@/components/sections/InstagramSection";
 
 import { getCollections } from "@/lib/collections";
 import { getBrands } from "@/lib/brands";
-import { getFeaturedProducts, getNewArrivals } from "@/lib/catalog";
+import { getDiverseProducts } from "@/lib/catalog";
 
 export default function Home() {
   const collections = getCollections();
   const brands = getBrands();
-  const featured = getFeaturedProducts(4);
-  const newArrivals = getNewArrivals(4);
-  // Prefer New Arrivals; top up with featured if fewer than 4.
-  const highlightProducts =
-    newArrivals.length >= 4
-      ? newArrivals
-      : [
-          ...newArrivals,
-          ...featured.filter(
-            (p) => !newArrivals.some((n) => n.id === p.id),
-          ),
-        ].slice(0, 4);
+  const highlightProducts = getDiverseProducts(
+    4,
+    ["shirts", "t-shirts", "denims", "cord-sets"],
+    {
+      shirts: "ps-plain-005",
+      "cord-sets": "mb-001",
+    }
+  );
+
 
   return (
     <>
