@@ -1,7 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { LinkButton } from "@/components/ui/Button";
 
@@ -21,33 +19,21 @@ export function Hero() {
       {/* ── stage ───────────────────────────────────────────────────── */}
       <div className="relative h-[52svh] min-h-[380px] overflow-hidden lg:h-[56svh] lg:min-h-[460px]">
         <Image
-          src="https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?q=95&w=2400&auto=format&fit=crop"
+          src="/images/hero-sidrah-fashion.jpg"
           alt="Sidrah Fashion Premium Boyswear Clothing & Apparel Collection"
           fill
           priority
           unoptimized
-          className="object-cover object-center"
+          className="object-cover object-center sm:object-[center_10%]"
         />
-        {/* Subtle gradient vignette to seamlessly bleed into the page background */}
-        <div className="absolute inset-0 bg-gradient-to-t from-page via-page/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-page/40 via-transparent to-transparent" />
-        
-        {/* Ghost typography brand watermark */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <span className="select-none font-display text-[14vw] font-bold tracking-tight text-ink/10">
-            SIDRAH
-          </span>
-        </div>
-
         <h1 className="sr-only">
           Sidrah Fashion — premium boyswear wholesale
         </h1>
       </div>
 
-
       {/* ── bottom band ─────────────────────────────────────────────── */}
-      <Container className="relative z-30 grid gap-8 pb-8 pt-2 lg:grid-cols-12 lg:items-end lg:gap-10 lg:pb-10">
-        <div className="lg:col-span-6 xl:col-span-5">
+      <Container className="relative z-30 pb-8 pt-2 lg:pb-10">
+        <div className="max-w-xl">
           <p className="hero-fade-up font-sans text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-ink" style={{ "--hero-delay": "0.55s" } as CSSProperties}>
             Wholesale pre-booking open
           </p>
@@ -63,31 +49,6 @@ export function Hero() {
             <LinkButton href="/retailer" variant="secondary" size="md">
               Become a Retailer
             </LinkButton>
-          </div>
-        </div>
-
-        <div className="lg:col-span-4 lg:col-start-9">
-          <div className="hero-fade-up ml-auto max-w-xs rounded-sm border border-ink/15 bg-card/85 px-5 py-5 shadow-2 backdrop-blur-sm" style={{ "--hero-delay": "1s" } as CSSProperties}>
-            <p className="font-sans text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-ink/60">
-              Just landed
-            </p>
-            <p className="mt-1.5 font-display text-xl italic leading-tight text-ink">
-              The SS&rsquo;26 Edit
-            </p>
-            <p className="mt-2 text-[0.8125rem] leading-relaxed text-ink/65">
-              First drop now open for pre-book — allocate bestsellers before
-              they land.
-            </p>
-            <Link
-              href="/shop"
-              className="group mt-3.5 inline-flex items-center gap-1.5 font-sans text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:text-ink/60"
-            >
-              <span>Browse the edit</span>
-              <ArrowUpRight
-                className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                aria-hidden="true"
-              />
-            </Link>
           </div>
         </div>
       </Container>

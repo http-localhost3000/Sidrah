@@ -3,7 +3,7 @@ import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Logo } from "@/components/ui/Logo";
 import { WhatsAppIcon } from "@/components/whatsapp/WhatsAppIcon";
-import { footerNav, site } from "@/data/site";
+import { site } from "@/data/site";
 import { buildEnquiryUrl } from "@/lib/whatsapp";
 
 const currentYear = new Date().getFullYear();
@@ -16,8 +16,8 @@ export function Footer() {
           <div>
             <Logo tone="page" size="lg" />
             <p className="mt-6 max-w-sm text-body text-page/70">
-              Premium wholesale boys&rsquo; kidswear from Mumbai. Curated
-              brands, considered fabrics, worldwide shipping.
+              Premium wholesale boys’ kidswear from Mumbai. Curated brands,
+              considered fabrics, worldwide shipping.
             </p>
             <div className="mt-8 space-y-3 text-body text-page/75">
               <p className="flex items-start gap-3">
@@ -61,9 +61,111 @@ export function Footer() {
             </div>
           </div>
 
-          <FooterColumn title="Shop" items={footerNav.shop} />
-          <FooterColumn title="Company" items={footerNav.company} />
-          <FooterColumn title="Legal" items={footerNav.legal} />
+          <div>
+            <p className="eyebrow text-page/50">Shop</p>
+            <ul className="mt-6 space-y-3">
+              <li>
+                <Link
+                  className="text-body text-page/75 transition-colors hover:text-page"
+                  href="/shop"
+                >
+                  Shop All
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="text-body text-page/75 transition-colors hover:text-page"
+                  href="/shop?new=1"
+                >
+                  New Arrivals
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="text-body text-page/75 transition-colors hover:text-page"
+                  href="/brands"
+                >
+                  Brands
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="eyebrow text-page/50">Company</p>
+            <ul className="mt-6 space-y-3">
+              <li>
+                <Link
+                  className="text-body text-page/75 transition-colors hover:text-page"
+                  href="/about"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="text-body text-page/75 transition-colors hover:text-page"
+                  href="/contact"
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="text-body text-page/75 transition-colors hover:text-page"
+                  href="/retailer"
+                >
+                  Become a Retailer
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="text-body text-page/75 transition-colors hover:text-page"
+                  href="/size-guide"
+                >
+                  Size Guide
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="text-body text-page/75 transition-colors hover:text-page"
+                  href="/shipping"
+                >
+                  Shipping
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="eyebrow text-page/50">Legal</p>
+            <ul className="mt-6 space-y-3">
+              <li>
+                <Link
+                  className="text-body text-page/75 transition-colors hover:text-page"
+                  href="/privacy"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="text-body text-page/75 transition-colors hover:text-page"
+                  href="/terms"
+                >
+                  Terms
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="text-body text-page/75 transition-colors hover:text-page"
+                  href="/shipping"
+                >
+                  Shipping Policy
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div className="mt-block flex flex-wrap items-center gap-3">
@@ -101,10 +203,8 @@ export function Footer() {
       </Container>
 
       <div className="border-t border-page/10">
-        <Container className="flex flex-col items-start justify-between gap-4 py-6 text-caption text-page/50 sm:flex-row sm:items-center">
-          <p>
-            © {currentYear} {site.name}. All rights reserved.
-          </p>
+        <Container className="flex flex-col items-start justify-between gap-4 py-6 text-page/50 sm:flex-row sm:items-center">
+          <p>© {currentYear} {site.name}. All rights reserved.</p>
           <p className="eyebrow text-page/40">
             Wholesale · Mumbai · Worldwide shipping
           </p>
@@ -114,27 +214,3 @@ export function Footer() {
   );
 }
 
-interface FooterColumnProps {
-  title: string;
-  items: ReadonlyArray<{ label: string; href: string }>;
-}
-
-function FooterColumn({ title, items }: FooterColumnProps) {
-  return (
-    <div>
-      <p className="eyebrow text-page/50">{title}</p>
-      <ul className="mt-6 space-y-3">
-        {items.map((item) => (
-          <li key={item.href}>
-            <Link
-              href={item.href}
-              className="text-body text-page/75 transition-colors hover:text-page"
-            >
-              {item.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}

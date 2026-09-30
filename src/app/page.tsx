@@ -32,19 +32,12 @@ export default function Home() {
 
       <section className="bg-page pb-section">
         <Container>
-          <SectionHeader
-            eyebrow="Shop by Collection"
-            title={
-              <>
-                Nine considered collections<span className="italic">.</span>
-              </>
-            }
-            description="Explore our boys' wear collections — shirts, T-shirts, denim, pants, shorts, cord sets and more, curated across six brands."
-            link={{ label: "Shop all", href: "/shop" }}
-          />
-          <div className="mt-block">
-            <EditorialCollectionGrid collections={collections} />
+          <div className="mb-8">
+            <h2 className="font-display text-3xl font-medium text-ink lg:text-4xl">
+              Shop by Collection
+            </h2>
           </div>
+          <EditorialCollectionGrid collections={collections} />
         </Container>
       </section>
 

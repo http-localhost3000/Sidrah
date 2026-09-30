@@ -39,8 +39,8 @@ export function WhySidrah() {
   const [progress, setProgress] = useState(0);
 
   // Scroll-driven storyline progress: the line starts drawing as soon as the
-  // section enters the viewport and only finishes once it has been scrolled
-  // near the top, so each dot/card activates one by one while scrolling.
+  // section enters the viewport and finishes once it has been scrolled,
+  // activating each dot, black icon box, and card one by one.
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -55,7 +55,7 @@ export function WhySidrah() {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight || 1;
       const start = vh * 0.95;
-      const end = vh * 0.15;
+      const end = vh * 0.2;
       const p = (start - rect.top) / (start - end);
       setProgress(Math.min(1, Math.max(0, p)));
     };
@@ -75,7 +75,7 @@ export function WhySidrah() {
   }, []);
 
   const isDotActive = (i: number) =>
-    progress >= (i + 0.5) / items.length;
+    progress >= (i + 0.25) / items.length;
   const isDotNext = (i: number) =>
     !isDotActive(i) && progress >= i / items.length;
 
@@ -137,3 +137,5 @@ export function WhySidrah() {
     </div>
   );
 }
+
+

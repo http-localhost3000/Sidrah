@@ -14,10 +14,7 @@ export function Logo({ className, size = "md", tone = "ink" }: LogoProps) {
     lg: { primary: "text-[1.55rem]", secondary: "text-[0.66rem]", gap: "mt-1"     },
   }[size];
 
-  const colors =
-    tone === "page"
-      ? { primary: "text-page", secondary: "text-page/50" }
-      : { primary: "text-ink",  secondary: "text-ink/50"  };
+  const secondaryColor = tone === "page" ? "text-page/50" : "text-ink/50";
 
   return (
     <Link
@@ -27,8 +24,7 @@ export function Logo({ className, size = "md", tone = "ink" }: LogoProps) {
     >
       <span
         className={cn(
-          "font-display font-normal tracking-[0.14em]",
-          colors.primary,
+          "font-display font-extrabold tracking-[0.14em] bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent",
           scale.primary,
         )}
       >
@@ -37,7 +33,7 @@ export function Logo({ className, size = "md", tone = "ink" }: LogoProps) {
       <span
         className={cn(
           "font-sans font-light uppercase tracking-[0.42em]",
-          colors.secondary,
+          secondaryColor,
           scale.secondary,
           scale.gap,
         )}

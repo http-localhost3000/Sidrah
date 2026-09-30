@@ -1,8 +1,6 @@
 import Link from "next/link";
-import { ProductImage } from "./ProductImage";
+import Image from "next/image";
 import { WhatsAppIcon } from "@/components/whatsapp/WhatsAppIcon";
-import { Badge } from "@/components/ui/Badge";
-import { PriceDisplay } from "./PriceDisplay";
 import { buildEnquiryUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/cn";
 import type { Product } from "@/types/product";
@@ -16,93 +14,108 @@ interface ProductCardProps {
 export function ProductCard({
   product,
   className,
-  imageTone = "cream",
 }: ProductCardProps) {
   const sizeSummary =
     product.sizes.length > 3
       ? `${product.sizes[0]} — ${product.sizes[product.sizes.length - 1]}`
       : product.sizes.join(" · ");
 
-  // First image is the primary card image
   const primaryImage = product.images[0];
+  const originalPrice = product.price;
+  const discountAmount = product.discount ?? 10;
+  const currentPrice = originalPrice - discountAmount;
 
   return (
     <article
       className={cn(
-        "group relative flex h-full flex-col border border-ink/10 bg-card shadow-1",
-        "transition-all duration-300 ease-editorial",
-        "hover:-translate-y-1 hover:border-ink/30 hover:shadow-2",
+        "group relative flex h-full flex-col overflow-hidden rounded-lg border border-ink/10 bg-card shadow-sm transition-all duration-300 hover:border-ink/25 hover:shadow-md",
         className,
       )}
     >
       <Link
         href={`/products/${product.slug}`}
         aria-label={product.name}
-        className="relative block overflow-hidden bg-[#f7f5f2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+        className="relative block overflow-hidden bg-[#f7f5f2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
       >
-        <div className="transition-transform duration-700 ease-editorial group-hover:scale-[1.03]">
-          <ProductImage
-            image={primaryImage}
-            alt={product.name}
-            aspect="portrait"
-            tone={imageTone}
-            showMark={true}
-            sizes="(max-width: 640px) 46vw, (max-width: 1024px) 31vw, 24vw"
-          />
+        <div className="transition-transform duration-500 group-hover:scale-105">
+          <div className="relative w-full overflow-hidden bg-[#f7f5f2] aspect-[4/5]">
+            <div className="absolute inset-2 sm:inset-3">
+              {primaryImage ? (
+                <Image
+                  src={primaryImage.src}
+                  alt={product.name}
+                  fill
+                  sizes="(max-width: 640px) 46vw, (max-width: 1024px) 31vw, 24vw"
+                  className="object-contain"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-muted text-xs text-ink/40">
+                  No Image
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
         <div className="pointer-events-none absolute left-3 top-3 flex flex-col items-start gap-1.5">
-          {product.newArrival && <Badge tone="ink">New</Badge>}
-          {product.featured && !product.newArrival && (
-            <Badge tone="outline">Featured</Badge>
+          {product.newArrival && (
+            <span className="inline-flex items-center justify-center rounded-sm font-sans font-medium uppercase tracking-[0.14em] bg-ink text-page h-5 px-2 text-[0.62rem]">
+              New
+            </span>
           )}
-          {!!product.discount && product.discount > 0 && (
-            <Badge
-              tone="outline"
-              className="border-ink/25 bg-page/90 backdrop-blur-sm"
-            >
-              ₹{product.discount} OFF
-            </Badge>
+          {discountAmount > 0 && (
+            <span className="inline-flex items-center justify-center rounded-sm font-sans font-medium uppercase tracking-[0.14em] border h-5 px-2 text-[0.62rem] border-red-600/40 bg-red-50/95 text-red-700 backdrop-blur-sm">
+              Save ₹{discountAmount}
+            </span>
           )}
         </div>
       </Link>
 
-      <div className="flex flex-1 flex-col p-5 lg:p-6">
+      <div className="flex flex-1 flex-col p-4">
         {product.brand && product.brand !== "Unbranded" && (
-          <p className="eyebrow flex items-center gap-2.5 text-ink/55">
-            <span aria-hidden="true" className="h-px w-4 bg-tan" />
+          <p className="text-[0.7rem] font-medium uppercase tracking-wider text-ink/50">
             {product.brand}
           </p>
         )}
-        <h3 className="mt-2.5 font-display text-h-lg text-ink">
+        <h3 className="mt-2 text-sm font-normal leading-snug text-ink">
           <Link
             href={`/products/${product.slug}`}
             className="transition-colors hover:text-ink/70"
           >
             {product.name}
+            {product.setQuantity ? ` (Set of ${product.setQuantity} pcs)` : ""}
           </Link>
         </h3>
-        <p className="mt-1.5 text-caption text-ink/55">
-          {product.category.replace("-", " ")} · Sizes {sizeSummary}
+        <p className="mt-1.5 text-xs text-ink/50">
+          Sizes: {sizeSummary}
         </p>
 
-        <div className="mt-auto pt-5">
-          <div className="rule-t flex items-end justify-between gap-4 pt-4">
-            <PriceDisplay product={product} variant="enquiry" />
-            <a
-              href={buildEnquiryUrl({
-                name: product.name,
-                brand: product.brand,
-                sku: product.sku,
-              })}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Enquire about ${product.name} on WhatsApp`}
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center border border-ink/20 text-ink transition-all duration-300 ease-editorial hover:-translate-y-0.5 hover:border-ink hover:bg-ink hover:text-page focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-card"
-            >
-              <WhatsAppIcon className="h-4 w-4" />
-            </a>
-          </div>
+        <div className="mt-3 flex items-center gap-2">
+          <span className="text-base font-semibold text-ink">
+            ₹{currentPrice}
+          </span>
+          {discountAmount > 0 && (
+            <span className="text-sm text-ink/40 line-through">
+              ₹{originalPrice}
+            </span>
+          )}
+        </div>
+
+        <div className="mt-auto pt-4">
+          <a
+            href={buildEnquiryUrl({
+              name: product.name,
+              brand: product.brand,
+              sku: product.sku,
+            })}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Enquire about ${product.name} on WhatsApp`}
+            className="flex w-full items-center justify-center gap-2 rounded-md border border-green-600 bg-green-600 px-4 py-2.5 text-sm font-medium text-white transition-all hover:bg-green-700"
+          >
+            <WhatsAppIcon className="h-4 w-4" />
+            Enquire on WhatsApp
+          </a>
         </div>
       </div>
     </article>
