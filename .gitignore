@@ -32,3 +32,6 @@ next-env.d.ts
 .env*.local
 
 .vercel
+
+# product images (large files — served from local/Vercel, not needed in git)
+/public/images/products/
