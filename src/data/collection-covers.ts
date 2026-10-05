@@ -1,7 +1,7 @@
 const BASE = "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/";
 
 export const collectionCovers: Record<string, string> = {
-  shirts:        BASE + "WhatsApp%20Image%202026-08-25%20at%204.54.08%20PM.jpeg",
+  shirts:        BASE + "WhatsApp%20Image%202026-08-25%20at%204.53.22%20PM%20(3).jpeg",
   "t-shirts":    BASE + "WhatsApp%20Image%202026-08-25%20at%205.17.26%20PM.jpeg",
   denims:        BASE + "WhatsApp%20Image%202026-08-30%20at%204.36.18%20PM%20(3).jpeg",
   "track-pants": BASE + "WhatsApp%20Image%202026-08-30%20at%204.33.01%20PM%20(5).jpeg",

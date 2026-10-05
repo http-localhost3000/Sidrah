@@ -107,6 +107,7 @@ export function ProductCard({
               name: product.name,
               brand: product.brand,
               sku: product.sku,
+              slug: product.slug,
             })}
             target="_blank"
             rel="noopener noreferrer"

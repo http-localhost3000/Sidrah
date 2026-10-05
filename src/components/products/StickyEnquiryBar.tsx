@@ -7,7 +7,7 @@ import type { Product } from "@/types/product";
 interface StickyEnquiryBarProps {
   product: Pick<
     Product,
-    "name" | "brand" | "sku" | "setQuantity"
+    "name" | "brand" | "sku" | "setQuantity" | "slug"
   >;
   selectedSize?: string;
 }

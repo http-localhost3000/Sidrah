@@ -9,9 +9,9 @@ interface LogoProps {
 
 export function Logo({ className, size = "md", tone = "ink" }: LogoProps) {
   const scale = {
-    sm: { primary: "text-[1.0rem]",  secondary: "text-[0.52rem]", gap: "mt-[3px]" },
-    md: { primary: "text-[1.2rem]",  secondary: "text-[0.58rem]", gap: "mt-1"     },
-    lg: { primary: "text-[1.55rem]", secondary: "text-[0.66rem]", gap: "mt-1"     },
+    sm: { primary: "text-[1.55rem]", secondary: "text-[0.52rem]", gap: "mt-[3px]" },
+    md: { primary: "text-[1.95rem]", secondary: "text-[0.58rem]", gap: "mt-1"     },
+    lg: { primary: "text-[2.4rem]",  secondary: "text-[0.66rem]", gap: "mt-1"     },
   }[size];
 
   const secondaryColor = tone === "page" ? "text-page/50" : "text-ink/50";

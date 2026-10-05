@@ -3,8 +3,10 @@ import type { Product } from "@/types/product";
 
 const digitsOnly = (s: string) => s.replace(/\D/g, "");
 
+const SITE_URL = "https://sidrah-fashion.vercel.app";
+
 export interface EnquiryContext {
-  product?: Pick<Product, "name" | "brand" | "sku"> &
+  product?: Pick<Product, "name" | "brand" | "sku" | "slug"> &
     Partial<Pick<Product, "setQuantity">>;
   selectedSize?: string;
 }
@@ -35,6 +37,8 @@ export function buildEnquiryUrl(
     if (ctx.product.setQuantity) {
       lines.push(`Set: ${ctx.product.setQuantity} pieces`);
     }
+    lines.push("");
+    lines.push(`Product link: ${SITE_URL}/products/${ctx.product.slug}`);
     lines.push("");
     lines.push("Please share availability and wholesale details.");
   } else {

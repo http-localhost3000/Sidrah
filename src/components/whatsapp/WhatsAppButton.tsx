@@ -4,7 +4,7 @@ import { WhatsAppIcon } from "./WhatsAppIcon";
 import type { Product } from "@/types/product";
 
 interface WhatsAppButtonProps {
-  product?: Pick<Product, "name" | "brand" | "sku">;
+  product?: Pick<Product, "name" | "brand" | "sku" | "slug">;
   className?: string;
   label?: string;
   size?: "md" | "lg";

@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn";
 import type { Product } from "@/types/product";
 
 interface EnquireWhatsAppProps {
-  product: Pick<Product, "name" | "brand" | "sku" | "setQuantity">;
+  product: Pick<Product, "name" | "brand" | "sku" | "setQuantity" | "slug">;
   selectedSize?: string;
   size?: "md" | "lg";
   className?: string;

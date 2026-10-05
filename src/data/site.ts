@@ -13,7 +13,8 @@ export const site = {
     country: "India",
   },
   whatsapp: "+91 97141 14160",
-  phone: "+91 97141 14160",
+  phone: "+91 97 141 141 60",
+  phone2: "+91 981 967 2122",
   email: "sidrahfashion07@gmail.com",
   instagram: {
     handle: "sidrah_fashion_wholesale",

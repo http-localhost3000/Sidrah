@@ -34,18 +34,26 @@ export function Footer() {
                   {site.address.country}
                 </span>
               </p>
-              <p className="flex items-center gap-3">
+              <div className="flex items-center gap-3">
                 <Phone
                   aria-hidden="true"
                   className="h-4 w-4 shrink-0 text-page/50"
                 />
-                <a
-                  href={`tel:${site.phone.replace(/\s+/g, "")}`}
-                  className="transition-colors hover:text-page"
-                >
-                  {site.phone}
-                </a>
-              </p>
+                <div className="flex items-center gap-4">
+                  <a
+                    href={`tel:${site.phone.replace(/\s+/g, "")}`}
+                    className="whitespace-nowrap rounded-sm bg-white/20 px-3 py-1 font-semibold text-white text-sm tracking-wide border border-white/30 transition-colors hover:bg-white/30"
+                  >
+                    {site.phone}
+                  </a>
+                  <a
+                    href={`tel:${site.phone2.replace(/\s+/g, "")}`}
+                    className="whitespace-nowrap rounded-sm bg-white/20 px-3 py-1 font-semibold text-white text-sm tracking-wide border border-white/30 transition-colors hover:bg-white/30"
+                  >
+                    {site.phone2}
+                  </a>
+                </div>
+              </div>
               <p className="flex items-center gap-3">
                 <Mail
                   aria-hidden="true"
