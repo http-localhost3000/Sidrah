@@ -23867,5 +23867,85 @@
       "dark"
     ],
     "isNew": true
+  },
+  {
+    "id": "imp-set-009",
+    "slug": "imported-blue-classic-denim-jacket-set",
+    "sku": "IMP-SET-009",
+    "name": "Imported Blue Classic Denim Jacket Set",
+    "brand": "Imported",
+    "brandSlug": "imported",
+    "category": "imported",
+    "subcategory": "imported-sets",
+    "description": "Premium imported classic blue denim jacket and wide-leg jeans set for boys. Sizes 1–6 years.",
+    "price": 1110,
+    "discount": 10,
+    "setQuantity": 5,
+    "sizes": [
+      "1Y",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-24-36m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "images": [
+      "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-blue-classic-jacket-set.webp"
+    ],
+    "tags": [
+      "imported",
+      "denim",
+      "set",
+      "jacket",
+      "blue"
+    ],
+    "isNew": true
+  },
+  {
+    "id": "imp-set-010",
+    "slug": "imported-charcoal-classic-denim-jacket-set",
+    "sku": "IMP-SET-010",
+    "name": "Imported Charcoal Classic Denim Jacket Set",
+    "brand": "Imported",
+    "brandSlug": "imported",
+    "category": "imported",
+    "subcategory": "imported-sets",
+    "description": "Premium imported charcoal acid-wash classic denim jacket and wide-leg jeans set for boys. Sizes 1–6 years.",
+    "price": 1110,
+    "discount": 10,
+    "setQuantity": 5,
+    "sizes": [
+      "1Y",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-24-36m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "images": [
+      "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-charcoal-classic-jacket-set.webp"
+    ],
+    "tags": [
+      "imported",
+      "denim",
+      "set",
+      "jacket",
+      "charcoal"
+    ],
+    "isNew": true
   }
 ]
