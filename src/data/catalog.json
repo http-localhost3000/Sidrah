@@ -23705,5 +23705,86 @@
       "printed"
     ],
     "isNew": true
+  },
+  {
+    "id": "imp-set-005",
+    "slug": "imported-brown-gradient-jacket-graffiti-jeans-set",
+    "sku": "IMP-SET-005",
+    "name": "Imported Brown Gradient Jacket Graffiti Jeans Set",
+    "brand": "Imported",
+    "brandSlug": "imported",
+    "category": "imported",
+    "subcategory": "imported-sets",
+    "description": "Premium imported brown gradient denim jacket with dark graffiti-print distressed jeans set for boys. Sizes 1–6 years.",
+    "price": 1125,
+    "discount": 10,
+    "setQuantity": 5,
+    "sizes": [
+      "1Y",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-24-36m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "images": [
+      "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-brown-gradient-jacket-set.webp"
+    ],
+    "tags": [
+      "imported",
+      "jacket",
+      "set",
+      "gradient",
+      "graffiti"
+    ],
+    "isNew": true
+  },
+  {
+    "id": "imp-set-006",
+    "slug": "imported-olive-gradient-jacket-graffiti-jeans-set",
+    "sku": "IMP-SET-006",
+    "name": "Imported Olive Gradient Jacket Graffiti Jeans Set",
+    "brand": "Imported",
+    "brandSlug": "imported",
+    "category": "imported",
+    "subcategory": "imported-sets",
+    "description": "Premium imported olive green gradient denim jacket with dark graffiti-print distressed jeans set for boys. Sizes 1–6 years.",
+    "price": 1125,
+    "discount": 10,
+    "setQuantity": 5,
+    "sizes": [
+      "1Y",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-24-36m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "images": [
+      "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-olive-gradient-jacket-set.webp"
+    ],
+    "tags": [
+      "imported",
+      "jacket",
+      "set",
+      "gradient",
+      "graffiti",
+      "olive"
+    ],
+    "isNew": true
   }
 ]
