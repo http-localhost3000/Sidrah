@@ -23947,5 +23947,86 @@
       "charcoal"
     ],
     "isNew": true
+  },
+  {
+    "id": "imp-set-011",
+    "slug": "imported-blue-patchwork-denim-jacket-set",
+    "sku": "IMP-SET-011",
+    "name": "Imported Blue Patchwork Denim Jacket Set",
+    "brand": "Imported",
+    "brandSlug": "imported",
+    "category": "imported",
+    "subcategory": "imported-sets",
+    "description": "Premium imported blue patchwork denim jacket and frayed panel wide-leg jeans set for boys. Sizes 1–6 years.",
+    "price": 1150,
+    "discount": 10,
+    "setQuantity": 5,
+    "sizes": [
+      "1Y",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-24-36m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "images": [
+      "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-blue-patchwork-jacket-set.webp"
+    ],
+    "tags": [
+      "imported",
+      "denim",
+      "set",
+      "jacket",
+      "patchwork"
+    ],
+    "isNew": true
+  },
+  {
+    "id": "imp-set-012",
+    "slug": "imported-black-patchwork-denim-jacket-set",
+    "sku": "IMP-SET-012",
+    "name": "Imported Black Patchwork Denim Jacket Set",
+    "brand": "Imported",
+    "brandSlug": "imported",
+    "category": "imported",
+    "subcategory": "imported-sets",
+    "description": "Premium imported black patchwork denim jacket and frayed panel wide-leg jeans set for boys. Sizes 1–6 years.",
+    "price": 1150,
+    "discount": 10,
+    "setQuantity": 5,
+    "sizes": [
+      "1Y",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-24-36m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "images": [
+      "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-black-patchwork-jacket-set.webp"
+    ],
+    "tags": [
+      "imported",
+      "denim",
+      "set",
+      "jacket",
+      "patchwork",
+      "black"
+    ],
+    "isNew": true
   }
 ]
