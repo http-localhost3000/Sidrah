@@ -23578,10 +23578,7 @@
       "age-4-6y"
     ],
     "images": [
-      {
-        "src": "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-charcoal-denim-set.jpg",
-        "alt": "Imported Charcoal Washed Denim Jacket Set"
-      }
+      "imp-set-charcoal-denim-set.jpg"
     ],
     "tags": [
       "imported",
@@ -23589,7 +23586,8 @@
       "set",
       "jacket"
     ],
-    "isNew": true
+    "isNew": true,
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE"
   },
   {
     "id": "imp-set-002",
@@ -23620,10 +23618,7 @@
       "age-4-6y"
     ],
     "images": [
-      {
-        "src": "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-blue-printed-denim-set.jpg",
-        "alt": "Imported Blue Printed Denim Jacket Set"
-      }
+      "imp-set-blue-printed-denim-set.jpg"
     ],
     "tags": [
       "imported",
@@ -23632,7 +23627,8 @@
       "jacket",
       "printed"
     ],
-    "isNew": true
+    "isNew": true,
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE"
   },
   {
     "id": "imp-set-003",
@@ -23663,10 +23659,7 @@
       "age-4-6y"
     ],
     "images": [
-      {
-        "src": "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-cream-print-jacket-dark-jeans.webp",
-        "alt": "Imported Cream Print Jacket Dark Jeans Set"
-      }
+      "imp-set-cream-print-jacket-dark-jeans.webp"
     ],
     "tags": [
       "imported",
@@ -23674,7 +23667,8 @@
       "set",
       "printed"
     ],
-    "isNew": true
+    "isNew": true,
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE"
   },
   {
     "id": "imp-set-004",
@@ -23705,10 +23699,7 @@
       "age-4-6y"
     ],
     "images": [
-      {
-        "src": "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-cream-print-jacket-blue-jeans.webp",
-        "alt": "Imported Cream Print Jacket Blue Jeans Set"
-      }
+      "imp-set-cream-print-jacket-blue-jeans.webp"
     ],
     "tags": [
       "imported",
@@ -23716,7 +23707,8 @@
       "set",
       "printed"
     ],
-    "isNew": true
+    "isNew": true,
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE"
   },
   {
     "id": "imp-set-005",
@@ -23747,10 +23739,7 @@
       "age-4-6y"
     ],
     "images": [
-      {
-        "src": "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-brown-gradient-jacket-set.webp",
-        "alt": "Imported Brown Gradient Jacket Graffiti Jeans Set"
-      }
+      "imp-set-brown-gradient-jacket-set.webp"
     ],
     "tags": [
       "imported",
@@ -23759,7 +23748,8 @@
       "gradient",
       "graffiti"
     ],
-    "isNew": true
+    "isNew": true,
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE"
   },
   {
     "id": "imp-set-006",
@@ -23790,10 +23780,7 @@
       "age-4-6y"
     ],
     "images": [
-      {
-        "src": "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-olive-gradient-jacket-set.webp",
-        "alt": "Imported Olive Gradient Jacket Graffiti Jeans Set"
-      }
+      "imp-set-olive-gradient-jacket-set.webp"
     ],
     "tags": [
       "imported",
@@ -23803,7 +23790,8 @@
       "graffiti",
       "olive"
     ],
-    "isNew": true
+    "isNew": true,
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE"
   },
   {
     "id": "imp-set-007",
@@ -23834,10 +23822,7 @@
       "age-4-6y"
     ],
     "images": [
-      {
-        "src": "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-blue-zip-denim-tracksuit.webp",
-        "alt": "Imported Blue Zip Denim Tracksuit Set"
-      }
+      "imp-set-blue-zip-denim-tracksuit.webp"
     ],
     "tags": [
       "imported",
@@ -23846,7 +23831,8 @@
       "tracksuit",
       "zip"
     ],
-    "isNew": true
+    "isNew": true,
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE"
   },
   {
     "id": "imp-set-008",
@@ -23877,10 +23863,7 @@
       "age-4-6y"
     ],
     "images": [
-      {
-        "src": "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-dark-blue-zip-denim-tracksuit.webp",
-        "alt": "Imported Dark Blue Zip Denim Tracksuit Set"
-      }
+      "imp-set-dark-blue-zip-denim-tracksuit.webp"
     ],
     "tags": [
       "imported",
@@ -23890,7 +23873,8 @@
       "zip",
       "dark"
     ],
-    "isNew": true
+    "isNew": true,
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE"
   },
   {
     "id": "imp-set-009",
@@ -23921,10 +23905,7 @@
       "age-4-6y"
     ],
     "images": [
-      {
-        "src": "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-blue-classic-jacket-set.webp",
-        "alt": "Imported Blue Classic Denim Jacket Set"
-      }
+      "imp-set-blue-classic-jacket-set.webp"
     ],
     "tags": [
       "imported",
@@ -23933,7 +23914,8 @@
       "jacket",
       "blue"
     ],
-    "isNew": true
+    "isNew": true,
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE"
   },
   {
     "id": "imp-set-010",
@@ -23964,10 +23946,7 @@
       "age-4-6y"
     ],
     "images": [
-      {
-        "src": "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-charcoal-classic-jacket-set.webp",
-        "alt": "Imported Charcoal Classic Denim Jacket Set"
-      }
+      "imp-set-charcoal-classic-jacket-set.webp"
     ],
     "tags": [
       "imported",
@@ -23976,7 +23955,8 @@
       "jacket",
       "charcoal"
     ],
-    "isNew": true
+    "isNew": true,
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE"
   },
   {
     "id": "imp-set-011",
@@ -24007,10 +23987,7 @@
       "age-4-6y"
     ],
     "images": [
-      {
-        "src": "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-blue-patchwork-jacket-set.webp",
-        "alt": "Imported Blue Patchwork Denim Jacket Set"
-      }
+      "imp-set-blue-patchwork-jacket-set.webp"
     ],
     "tags": [
       "imported",
@@ -24019,7 +23996,8 @@
       "jacket",
       "patchwork"
     ],
-    "isNew": true
+    "isNew": true,
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE"
   },
   {
     "id": "imp-set-012",
@@ -24050,10 +24028,7 @@
       "age-4-6y"
     ],
     "images": [
-      {
-        "src": "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-black-patchwork-jacket-set.webp",
-        "alt": "Imported Black Patchwork Denim Jacket Set"
-      }
+      "imp-set-black-patchwork-jacket-set.webp"
     ],
     "tags": [
       "imported",
@@ -24063,6 +24038,7 @@
       "patchwork",
       "black"
     ],
-    "isNew": true
+    "isNew": true,
+    "imageFolder": "SIDRAH FASHION PRODUCTS IMAGE"
   }
 ]
