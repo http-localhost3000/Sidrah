@@ -23548,5 +23548,84 @@
     "active": true,
     "featured": false,
     "newArrival": true
+  },
+  {
+    "id": "imp-set-001",
+    "slug": "imported-charcoal-denim-jacket-set",
+    "sku": "IMP-SET-001",
+    "name": "Imported Charcoal Washed Denim Jacket Set",
+    "brand": "Imported",
+    "brandSlug": "imported",
+    "category": "imported",
+    "subcategory": "imported-sets",
+    "description": "Premium imported charcoal acid-wash denim jacket and matching wide-leg jeans set for boys. Paired with a graphic tee. Sizes 1–6 years.",
+    "price": 1110,
+    "discount": 10,
+    "setQuantity": 5,
+    "sizes": [
+      "1Y",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-24-36m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "images": [
+      "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-charcoal-denim-set.jpg"
+    ],
+    "tags": [
+      "imported",
+      "denim",
+      "set",
+      "jacket"
+    ],
+    "isNew": true
+  },
+  {
+    "id": "imp-set-002",
+    "slug": "imported-blue-printed-denim-jacket-set",
+    "sku": "IMP-SET-002",
+    "name": "Imported Blue Printed Denim Jacket Set",
+    "brand": "Imported",
+    "brandSlug": "imported",
+    "category": "imported",
+    "subcategory": "imported-sets",
+    "description": "Premium imported blue all-over printed denim jacket and wide-leg jeans set for boys. Styled with a white graphic tee. Sizes 1–6 years.",
+    "price": 1110,
+    "discount": 10,
+    "setQuantity": 5,
+    "sizes": [
+      "1Y",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-24-36m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "images": [
+      "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-blue-printed-denim-set.jpg"
+    ],
+    "tags": [
+      "imported",
+      "denim",
+      "set",
+      "jacket",
+      "printed"
+    ],
+    "isNew": true
   }
 ]
