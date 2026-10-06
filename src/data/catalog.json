@@ -23786,5 +23786,86 @@
       "olive"
     ],
     "isNew": true
+  },
+  {
+    "id": "imp-set-007",
+    "slug": "imported-blue-zip-denim-tracksuit-set",
+    "sku": "IMP-SET-007",
+    "name": "Imported Blue Zip Denim Tracksuit Set",
+    "brand": "Imported",
+    "brandSlug": "imported",
+    "category": "imported",
+    "subcategory": "imported-sets",
+    "description": "Premium imported light blue zip-up denim jacket and jogger jeans tracksuit set for boys. Sizes 1–6 years.",
+    "price": 1075,
+    "discount": 10,
+    "setQuantity": 5,
+    "sizes": [
+      "1Y",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-24-36m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "images": [
+      "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-blue-zip-denim-tracksuit.webp"
+    ],
+    "tags": [
+      "imported",
+      "denim",
+      "set",
+      "tracksuit",
+      "zip"
+    ],
+    "isNew": true
+  },
+  {
+    "id": "imp-set-008",
+    "slug": "imported-dark-blue-zip-denim-tracksuit-set",
+    "sku": "IMP-SET-008",
+    "name": "Imported Dark Blue Zip Denim Tracksuit Set",
+    "brand": "Imported",
+    "brandSlug": "imported",
+    "category": "imported",
+    "subcategory": "imported-sets",
+    "description": "Premium imported dark blue zip-up denim jacket and jogger jeans tracksuit set for boys. Sizes 1–6 years.",
+    "price": 1075,
+    "discount": 10,
+    "setQuantity": 5,
+    "sizes": [
+      "1Y",
+      "2Y",
+      "3Y",
+      "4Y",
+      "5Y",
+      "6Y"
+    ],
+    "ageRangeIds": [
+      "age-12-18m",
+      "age-18-24m",
+      "age-24-36m",
+      "age-2-4y",
+      "age-4-6y"
+    ],
+    "images": [
+      "/images/products/SIDRAH%20FASHION%20PRODUCTS%20IMAGE/imp-set-dark-blue-zip-denim-tracksuit.webp"
+    ],
+    "tags": [
+      "imported",
+      "denim",
+      "set",
+      "tracksuit",
+      "zip",
+      "dark"
+    ],
+    "isNew": true
   }
 ]
