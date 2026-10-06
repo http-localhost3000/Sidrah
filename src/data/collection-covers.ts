@@ -9,7 +9,7 @@ export const collectionCovers: Record<string, string> = {
   "cord-sets":   BASE + "WhatsApp%20Image%202026-08-25%20at%205.35.47%20PM.jpeg",
   "cargo-pants": BASE + "WhatsApp%20Image%202026-08-30%20at%205.45.53%20PM%20(4).jpeg",
   "linen-pants": BASE + "WhatsApp%20Image%202026-08-30%20at%205.24.51%20PM%20(4).jpeg",
-  imported:      BASE + "WhatsApp%20Image%202026-08-25%20at%204.53.23%20PM%20(3).jpeg",
+  imported:      BASE + "imp-set-blue-patchwork-jacket-set.webp",
 };
 
 // Torso-down garment shots read best anchored to the bottom (full garment and
